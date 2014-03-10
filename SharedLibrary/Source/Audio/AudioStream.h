@@ -36,6 +36,9 @@ private:
     
     AudioDeviceManager::AudioDeviceSetup        deviceSetup;
     
+    // add parameters for effects
+    // alloc my effects here
+    
 };
 
 #endif /* defined(__SharedLibrary__AudioStream__) */

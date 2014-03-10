@@ -23,7 +23,7 @@ public:
     
     void startAudioStreaming();
     void stopAudioStreaming();
-    void toggleRecord(int recorderStatus);
+
     
     
 private:

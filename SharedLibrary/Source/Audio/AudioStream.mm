@@ -13,6 +13,8 @@ AudioStream::AudioStream()
 {
     //--- Audio Device Settings ---//
     sharedAudioDeviceManager->getAudioDeviceSetup(deviceSetup);
+    
+    // instantiate my effects here
 }
 
 AudioStream::~AudioStream()
@@ -41,14 +43,26 @@ void AudioStream::audioDeviceIOCallback( const float** inputChannelData,
                                         int totalNumOutputChannels,
                                         int blockSize)
 {
-        
+    // switch effect cases here
+    
+    // if id/ status
+    // process (tmp out)
+    // else bypass (tmp out)
+    
+    // process by block
+    
     for (int sample = 0; sample < blockSize; sample++)
     {
         for (int channel = 0; channel < totalNumOutputChannels; channel++)
         {
+            
+
+            
+            
             outputChannelData[channel][sample] = inputChannelData[channel][sample];
         }
     }
+    
     
 }
 

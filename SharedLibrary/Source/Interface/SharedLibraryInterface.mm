@@ -39,4 +39,10 @@ void SharedLibraryInterface::toggleAudioButtonClicked(bool toggleStatus)
 void SharedLibraryInterface::setParameter(int effectID, int parameterID, float value)
 {
     
+    
 }
+
+
+
+
+

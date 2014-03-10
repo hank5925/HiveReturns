@@ -23,7 +23,6 @@
 - (IBAction)toggleAudioButtonClicked:(UIButton *)sender;
 
 
-@property (retain, nonatomic) IBOutlet UIButton *recordPlaybackButton;
-- (IBAction)recordPlaybackButtonClicked:(UIButton *)sender;
+
 
 @end

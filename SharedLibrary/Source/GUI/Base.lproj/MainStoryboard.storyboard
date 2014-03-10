@@ -35,22 +35,10 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkO-CY-IHG">
-                                <rect key="frame" x="20" y="316" width="280" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.047821713730649473" green="1" blue="0.32492195908060928" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Record / Playback">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="recordPlaybackButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="MGD-tj-jM7"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="recordPlaybackButton" destination="VkO-CY-IHG" id="blI-tf-fc5"/>
                         <outlet property="toggleAudioButton" destination="BCe-h5-kBB" id="lOU-c9-IWi"/>
                     </connections>
                 </viewController>

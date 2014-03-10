@@ -19,7 +19,6 @@ public:
     ~SharedLibraryInterface();
     
     void toggleAudioButtonClicked(bool toggleStatus);
-    void audioRecordPlaybackButtonClicked(int value);
     
     void setParameter(int effectID, int parameterID, float value);
     

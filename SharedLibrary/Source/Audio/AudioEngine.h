@@ -29,7 +29,6 @@ public:
 private:
     String filePath;
     ScopedPointer<AudioStream>  liveAudioStream;
-    ScopedPointer<AudioRecorder> liveAudioRecord;
     
 };
 

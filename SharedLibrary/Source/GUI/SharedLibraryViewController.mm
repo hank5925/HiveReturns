@@ -45,23 +45,13 @@
     
 }
 
-- (IBAction)recordPlaybackButtonClicked:(UIButton *)sender {
-    
-    m_iRecordPlaybackStatus = (m_iRecordPlaybackStatus + 1) % 2;
-    backEndInterface->audioRecordPlaybackButtonClicked(m_iRecordPlaybackStatus);
-    
-}
-
-
 
 - (void)dealloc
 {
     
     [_toggleAudioButton release];
     
-    
-    [_recordPlaybackButton release];
-    
+        
     delete backEndInterface;
     
     [super dealloc];

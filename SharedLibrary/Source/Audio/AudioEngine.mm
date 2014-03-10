@@ -18,7 +18,6 @@ AudioEngine::AudioEngine()
     filePath = File::getSpecialLocation (File::userDocumentsDirectory).getFullPathName() + "/testing.wav";
  
     liveAudioStream     =   new AudioStream();
-    liveAudioRecord     =   new AudioRecorder();
 }
 
 
@@ -26,26 +25,9 @@ AudioEngine::AudioEngine()
 AudioEngine::~AudioEngine()
 {
     liveAudioStream             =   nullptr;
-    liveAudioRecord             =   nullptr;
     sharedAudioDeviceManager    =   nullptr;
     
 }
-
-void AudioEngine::toggleRecord(int recordStatus)
-{
-    if (recordStatus == 1)
-    {
-        sharedAudioDeviceManager->addAudioCallback(liveAudioRecord);
-        liveAudioRecord->startRecording(filePath);
-    }
-    else if (recordStatus == 2)
-    {
-        liveAudioRecord->stopRecording();
-        sharedAudioDeviceManager->removeAudioCallback(liveAudioRecord);
-    }
-
-}
-
 
 
 
@@ -59,3 +41,8 @@ void AudioEngine::stopAudioStreaming()
 {
     sharedAudioDeviceManager->removeAudioCallback(liveAudioStream);
 }
+
+
+
+
+

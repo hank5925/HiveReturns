@@ -15,30 +15,20 @@ AudioStream::AudioStream()
     sharedAudioDeviceManager->getAudioDeviceSetup(deviceSetup);
 }
 
-
-
 AudioStream::~AudioStream()
 {
     sharedAudioDeviceManager->removeAudioCallback(this);
 }
-
-
-
 
 void AudioStream::audioDeviceAboutToStart(AudioIODevice* device)
 {
     
 }
 
-
-
 void AudioStream::audioDeviceStopped()
 {
     
 }
-
-
-
 
 //==============================================================================
 // Process Block
@@ -61,3 +51,8 @@ void AudioStream::audioDeviceIOCallback( const float** inputChannelData,
     }
     
 }
+
+
+
+
+

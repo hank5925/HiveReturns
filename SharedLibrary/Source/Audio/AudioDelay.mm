@@ -8,7 +8,7 @@
 
 #include "AudioDelay.h"
 
-CDelay::CDelay(int numChannels)
+CDelay::CDelay(int numChannels) : numChannels(numChannels)
 {
 	feedBack = 0;
 	wetDry = 0;

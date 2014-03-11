@@ -55,7 +55,7 @@
     
     
     
-//    _testButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _testButton = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [testButton ];
 }
 
@@ -144,6 +144,7 @@
     {
         [sender setSelected:false];
         [sender setBackgroundColor:[UIColor colorWithHue:0.5 saturation:1.0 brightness:0.6 alpha:1]];
+        backEndInterface->setEffectStatus(1);
         m_bToggleVibratoStatus = false;
     }
 }

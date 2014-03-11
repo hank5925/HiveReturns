@@ -50,12 +50,12 @@ void AudioStream::setEffectParam(int effectID, int parameterID, float value)
             if (parameterID == 1)
             {
                 //value = 0~1
-                paramValue1 = value * (0.5);
+                paramValue1 = value * (0.01);
                 pMyVibrato->setParam(CVibrato::kParamModWidthInS, paramValue1);
             }
             else if (parameterID == 2)
             {
-                paramValue2 = value * (20);
+                paramValue2 = value * (10);
                 pMyVibrato->setParam(CVibrato::kParamModFreqInHz, paramValue2);
             }
             break;

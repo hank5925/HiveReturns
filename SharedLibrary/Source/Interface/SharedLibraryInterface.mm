@@ -44,6 +44,6 @@ void SharedLibraryInterface::setParameter(int effectID, int parameterID, float v
 
 void SharedLibraryInterface::setEffectStatus(int effectID)
 {
-    
+    audioEngine->setEffectStatus(effectID);
 }
 

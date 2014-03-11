@@ -75,7 +75,7 @@ void AudioStream::setEffectParam(int effectID, int parameterID, float value)
             else if (parameterID == 2)
             {
                 paramValue2 = value * (0.8);
-                pMyDelay->setParam(0, paramValue2);
+                pMyDelay->setParam(1, paramValue2);
             }
             
         default:

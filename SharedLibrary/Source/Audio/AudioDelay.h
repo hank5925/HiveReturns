@@ -13,7 +13,7 @@
 #define __CDelay_hdr__
 
 #include "RingBuffer.h"
-#define MAX_DELAY 100000
+#define MAX_DELAY 1000
 
 /*	Fractional Delay
  ----------------

@@ -10,7 +10,7 @@
 
 
 
-AudioStream::AudioStream() : fSampleRate(0), iNumChannel(2)
+AudioStream::AudioStream()
 {
     //--- Audio Device Settings ---//
     sharedAudioDeviceManager->getAudioDeviceSetup(deviceSetup);
@@ -19,6 +19,7 @@ AudioStream::AudioStream() : fSampleRate(0), iNumChannel(2)
     
     // instantiate my effects here
     CVibrato::createInstance(pMyVibrato);
+    iNumChannel = 2;
     pMyDelay = new CDelay(iNumChannel);
 
 }
@@ -35,10 +36,10 @@ AudioStream::~AudioStream()
 void AudioStream::audioDeviceAboutToStart(AudioIODevice* device)
 {
     // init effects
-    iNumChannel = 2;
     fSampleRate = device->getCurrentSampleRate();
     pMyVibrato->initInstance(0.25, fSampleRate , iNumChannel);
     pMyDelay->initDefaults();
+    pMyDelay->setSampleRate(fSampleRate);
     
     
 }
@@ -69,7 +70,7 @@ void AudioStream::setEffectParam(int effectID, int parameterID, float value)
         case 2: //delay
             if (parameterID == 1)
             {
-                paramValue1 = value * (5);
+                paramValue1 = value * (1);
                 pMyDelay->setParam(0, paramValue1);
             }
             else if (parameterID == 2)
@@ -148,11 +149,11 @@ void AudioStream::audioDeviceIOCallback(const float** inputChannelData,
     }
     
     // ======== effect 2
-    bool bypassStatus = !delayStatus;
-    pMyDelay->process(ppfOutputBuff, blockSize, bypassStatus);
-    
-  
-    
+    if (delayStatus)
+    {
+        pMyDelay->process(ppfOutputBuff, blockSize, false);
+    }
+
     //  ================== process chain end ======================
     
     

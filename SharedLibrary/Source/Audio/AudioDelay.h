@@ -13,7 +13,7 @@
 #define __CDelay_hdr__
 
 #include "RingBuffer.h"
-#define MAX_DELAY 1000
+#define MAX_DELAY 100000
 
 /*	Fractional Delay
  ----------------
@@ -37,7 +37,7 @@ public:
     
 	void initDefaults();
     
-	void setSampleRate(int sampleRate);
+	void setSampleRate(float sampleRate);
 	void setChanNum(int numChan);
 	void setDelayFeedback(float feedback);
 	void setDelayTime(float delay);
@@ -63,7 +63,7 @@ private:
     
 	CRingBuffer<float> **ringBuffer;
     
-	int sampleRate;
+	float sampleRate;
 	int numChannels;
     
 	float feedBack;

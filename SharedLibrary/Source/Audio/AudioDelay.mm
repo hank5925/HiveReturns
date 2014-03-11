@@ -8,11 +8,11 @@
 
 #include "AudioDelay.h"
 
-CDelay::CDelay(int numChannels)
+CDelay::CDelay(int numChannels) : numChannels(numChannels)
 {
 	feedBack = 0;
 	wetDry = 0;
-    
+    sampleRate = 0;
 	ringBuffer = new CRingBuffer<float> *[numChannels];
     
 	for (int n = 0; n < numChannels; n++)
@@ -34,7 +34,7 @@ void CDelay::initDefaults()
 	setWetDry(0.5);
 }
 
-void CDelay::setSampleRate(int smplRate)
+void CDelay::setSampleRate(float smplRate)
 {
 	if (smplRate >0)
 		sampleRate = smplRate;

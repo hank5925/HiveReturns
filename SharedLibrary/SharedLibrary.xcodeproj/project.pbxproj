@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04B7B1B018CB1BA6009CBBC1 /* AudioRecorder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 04B7B1AE18CB1BA6009CBBC1 /* AudioRecorder.mm */; };
+		04D888F018CEBC65009DC2C3 /* AudioDelay.mm in Sources */ = {isa = PBXBuildFile; fileRef = 04D888EE18CEBC65009DC2C3 /* AudioDelay.mm */; };
 		04F1DD6218CE4AFC00C4F6A0 /* AudioVibrato.mm in Sources */ = {isa = PBXBuildFile; fileRef = 04F1DD6018CE4AFC00C4F6A0 /* AudioVibrato.mm */; };
 		FCE6E09518CB00EF00D6D1A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE6E09418CB00EF00D6D1A3 /* Foundation.framework */; };
 		FCE6E09718CB00EF00D6D1A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE6E09618CB00EF00D6D1A3 /* CoreGraphics.framework */; };
@@ -54,6 +55,8 @@
 /* Begin PBXFileReference section */
 		04B7B1AE18CB1BA6009CBBC1 /* AudioRecorder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioRecorder.mm; sourceTree = "<group>"; };
 		04B7B1AF18CB1BA6009CBBC1 /* AudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioRecorder.h; sourceTree = "<group>"; };
+		04D888EE18CEBC65009DC2C3 /* AudioDelay.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioDelay.mm; sourceTree = "<group>"; };
+		04D888EF18CEBC65009DC2C3 /* AudioDelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDelay.h; sourceTree = "<group>"; };
 		04F1DD6018CE4AFC00C4F6A0 /* AudioVibrato.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioVibrato.mm; sourceTree = "<group>"; };
 		04F1DD6118CE4AFC00C4F6A0 /* AudioVibrato.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioVibrato.h; sourceTree = "<group>"; };
 		04F1DD6418CE4BB700C4F6A0 /* RingBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RingBuffer.h; sourceTree = "<group>"; };
@@ -1155,6 +1158,8 @@
 				04F1DD7018CE4E3800C4F6A0 /* Lfo.h */,
 				04F1DD7318CE4E6900C4F6A0 /* SignalGen.h */,
 				04F1DD7518CE78F300C4F6A0 /* AudioEffects.h */,
+				04D888EE18CEBC65009DC2C3 /* AudioDelay.mm */,
+				04D888EF18CEBC65009DC2C3 /* AudioDelay.h */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -2995,6 +3000,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D888F018CEBC65009DC2C3 /* AudioDelay.mm in Sources */,
 				FCE6E0E018CB01B200D6D1A3 /* main.m in Sources */,
 				FCE6E0D818CB019F00D6D1A3 /* SharedLibraryViewController.mm in Sources */,
 				FCE6E0D618CB019F00D6D1A3 /* SharedLibraryAppDelegate.mm in Sources */,

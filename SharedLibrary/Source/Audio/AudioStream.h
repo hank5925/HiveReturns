@@ -39,6 +39,9 @@ private:
     CVibrato *pMyVibrato;
     bool  vibratoStatus;
     
+    CDelay *pMyDelay;
+    bool  delayStatus;
+    
     float **ppfInputBuff;
     float **ppfOutputBuff;
     float fSampleRate;

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Shared Library View Controller-->
@@ -18,70 +18,65 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9P-G0-iDD">
-                                <rect key="frame" x="20" y="181" width="126" height="57"/>
+                                <rect key="frame" x="55" y="96" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.50808787010000001" blue="0.54540395740000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                <state key="normal" title="微波拉托">
+                                <state key="normal" title="微波拉托" backgroundImage="test3-1.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="selected" title="Vibrato"/>
+                                <state key="selected" title="Vibrato" backgroundImage="test4-1.png"/>
                                 <connections>
                                     <action selector="toggleVibratoButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="kfU-pe-aYg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mi0-YK-Tma">
-                                <rect key="frame" x="174" y="181" width="126" height="57"/>
+                                <rect key="frame" x="165" y="96" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.50808787010000001" blue="0.54540395740000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="批曲緒弗特">
+                                <state key="normal" title="批曲緒弗特" backgroundImage="test3-2.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="selected" title="Pitch Shift"/>
+                                <state key="selected" title="Pitch Shift" backgroundImage="test4-2.png"/>
                                 <connections>
                                     <action selector="togglePitchShiftButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hMh-jA-4Jh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Rl-6R-eAT">
-                                <rect key="frame" x="20" y="255" width="126" height="57"/>
+                                <rect key="frame" x="55" y="206" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.50808787010000001" blue="0.54540395740000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="底累">
+                                <state key="normal" title="底累" backgroundImage="test3-3.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="selected" title="Delay"/>
+                                <state key="selected" title="Delay" backgroundImage="test4-3.png"/>
                                 <connections>
                                     <action selector="toggleDelayButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vmt-6l-6gz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dza-2U-BC0">
-                                <rect key="frame" x="174" y="255" width="126" height="57"/>
+                                <rect key="frame" x="165" y="206" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.50808787010000001" blue="0.54540395740000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="摟趴">
+                                <state key="normal" title="摟趴" backgroundImage="test3-4.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="selected" title="Lowpass"/>
+                                <state key="selected" title="Lowpass" backgroundImage="test4-4.png"/>
                                 <connections>
                                     <action selector="toggleLowpassButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="NpT-Cz-W6O"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QPJ-8R-ECp">
-                                <rect key="frame" x="20" y="54" width="280" height="57"/>
+                                <rect key="frame" x="110" y="382" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="開始">
+                                <state key="normal" title="開始" backgroundImage="test.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="selected" title="Start"/>
+                                <state key="selected" title="Start" backgroundImage="test2.png"/>
                                 <connections>
                                     <action selector="toggleStartButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hnB-nt-QgY"/>
                                 </connections>
@@ -101,6 +96,18 @@
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="test.png" width="158" height="158"/>
+        <image name="test2.png" width="156" height="156"/>
+        <image name="test3-1.png" width="78" height="78"/>
+        <image name="test3-2.png" width="78" height="78"/>
+        <image name="test3-3.png" width="78" height="78"/>
+        <image name="test3-4.png" width="78" height="78"/>
+        <image name="test4-1.png" width="77" height="77"/>
+        <image name="test4-2.png" width="77" height="77"/>
+        <image name="test4-3.png" width="77" height="77"/>
+        <image name="test4-4.png" width="77" height="77"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -47,3 +47,12 @@ void AudioEngine::setEffectParam(int effectID, int parameterID, float value)
     liveAudioStream->setEffectParam(effectID, parameterID, value);
 }
 
+
+void AudioEngine::setEffectStatus(int effectID)
+{
+    liveAudioStream->setEffectStatus(effectID);
+}
+
+
+
+

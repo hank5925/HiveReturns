@@ -44,6 +44,7 @@
      }
      ];
     
+    
     // GUI
     backEndInterface            = new SharedLibraryInterface;
     m_bToggleStartStatus        = false;
@@ -51,13 +52,37 @@
     m_bTogglePitchShiftStatus   = false;
     m_bToggleDelayStatus        = false;
     m_bToggleLowpassStatus      = false;
+    
+
 }
+
 
 
 - (void)motionDeviceUpdate:(CMDeviceMotion *)deviceMotion
 {
-    backEndInterface->setParameter(1, 1, deviceMotion.attitude.roll);
-    backEndInterface->setParameter(1, 2, deviceMotion.attitude.pitch);
+    /*
+        Initial (roll, pitch, yaw) = (0, 0, 0)
+        roll =  spinning around the pole which is parallel to the long side of screen,
+                0 at short side horizontal, ranges from -pi to pi, righty plus lefty minus
+                a glitch happens when pi changes to -pi with slight spin
+        pitch = spinning around the pole which is parallel to the short side of screen,
+                0 at long side horizontal, ranges from -pi/2 to pi/2, think of phone as a
+                fishing rod, then pointing to front is 0,
+                pointing up is pi/2, pointing down is -pi/2,
+                no glitch
+        yaw =   spinning around the pole which is perpendicular to the surface of screen,
+                ranges from -pi to pi, righty minus lefty plus
+                a glitch happens when pi changes to -pi with slight spin
+     */
+    
+    backEndInterface->setParameter(1, 1, (deviceMotion.attitude.roll + M_PI) / (M_PI * 2.f));
+    backEndInterface->setParameter(1, 2, (deviceMotion.attitude.pitch + M_PI) / (M_PI));
+    backEndInterface->setParameter(2, 1, 1 / (1 + expf(deviceMotion.userAcceleration.x)));
+    backEndInterface->setParameter(2, 2, 1 / (1 + expf(deviceMotion.userAcceleration.y)));
+    
+//    std::cout   << deviceMotion.attitude.roll << " "
+//                << deviceMotion.attitude.pitch << " "
+//                << deviceMotion.attitude.yaw << std::endl;
     
 //    deviceMotion.attitude.roll;
 //    deviceMotion.attitude.pitch;
@@ -119,6 +144,7 @@
     {
         [sender setSelected:false];
         [sender setBackgroundColor:[UIColor colorWithHue:0.5 saturation:1.0 brightness:0.6 alpha:1]];
+        backEndInterface->setEffectStatus(1);
         m_bToggleVibratoStatus = false;
     }
 }
@@ -142,11 +168,13 @@
     {
         [sender setSelected:true];
         [sender setBackgroundColor:[UIColor colorWithHue:0.8 saturation:1.0 brightness:0.6 alpha:1]];
+        backEndInterface->setEffectStatus(2);
         m_bToggleDelayStatus = true;
     } else
     {
         [sender setSelected:false];
         [sender setBackgroundColor:[UIColor colorWithHue:0.5 saturation:1.0 brightness:0.6 alpha:1]];
+        backEndInterface->setEffectStatus(2);
         m_bToggleDelayStatus = false;
     }
 }

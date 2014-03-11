@@ -23,12 +23,15 @@ public:
     
     void startAudioStreaming();
     void stopAudioStreaming();
+    void setEffectParam();
 
     
     
 private:
     String filePath;
     ScopedPointer<AudioStream>  liveAudioStream;
+    
+    //some effect param here?
     
 };
 

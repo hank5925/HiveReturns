@@ -9,7 +9,9 @@
 #ifndef SharedLibrary_AudioEffects_h
 #define SharedLibrary_AudioEffects_h
 
-#include "AudioVi
+// include all the sound effects here:
+
+#include "AudioVibrato.h"
 
 
 

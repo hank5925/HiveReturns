@@ -10,6 +10,7 @@
 #define __SharedLibrary__AudioStream__
 
 #include "SharedLibraryHeader.h"
+#include "AudioEffects.h"
 
 class AudioStream   :   public AudioIODeviceCallback
 {
@@ -35,8 +36,11 @@ public:
 private:
     
     AudioDeviceManager::AudioDeviceSetup        deviceSetup;
+    CVibrato *pMyVibrato;
+    float **ppfInputBuff;
+    float fSampleRate;
+    int   iNumChannel;
     
-    // add parameters for effects
     // alloc my effects here
     
 };

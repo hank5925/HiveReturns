@@ -15,7 +15,7 @@ class CLfo;
 template <class T>
 class CRingBuffer;
 
-class CMyProject
+class CVibrato
 {
 public:
     /*! version number */
@@ -38,8 +38,8 @@ public:
     static const int getVersion (const Version_t eVersionIdx);
     static const char* getBuildDate ();
     
-    static Error_t createInstance (CMyProject*& pCMyProject);
-    static Error_t destroyInstance (CMyProject*& pCMyProject);
+    static Error_t createInstance (CVibrato*& pCMyProject);
+    static Error_t destroyInstance (CVibrato*& pCMyProject);
     
     Error_t initInstance (float fMaxModWidthInS, float fSampleRateInHz, int iNumChannels);
     Error_t resetInstance ();
@@ -50,8 +50,8 @@ public:
     Error_t process (float **ppfInputBuffer, float **ppfOutputBuffer, int iNumberOfFrames);
     
 protected:
-    CMyProject ();
-    virtual ~CMyProject ();
+    CVibrato ();
+    virtual ~CVibrato ();
     
 private:
     bool isInParamRange (VibratoParam_t eParam, float fValue);

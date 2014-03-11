@@ -21,7 +21,6 @@ AudioEngine::AudioEngine()
 }
 
 
-
 AudioEngine::~AudioEngine()
 {
     liveAudioStream             =   nullptr;
@@ -43,6 +42,8 @@ void AudioEngine::stopAudioStreaming()
 }
 
 
-
-
+void AudioEngine::setEffectParam()
+{
+    
+}
 

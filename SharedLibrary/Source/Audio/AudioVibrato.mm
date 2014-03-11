@@ -16,7 +16,7 @@
 #include "RingBuffer.h"
 
 
-CMyProject::CMyProject () :
+CVibrato::CVibrato () :
 m_bIsInitialized(false),
 m_pCLfo(0),
 m_ppCRingBuff(0),
@@ -29,15 +29,15 @@ m_iNumChannels(0)
 }
 
 
-CMyProject::~CMyProject ()
+CVibrato::~CVibrato ()
 {
     this->resetInstance ();
 }
 
 
-Error_t CMyProject::createInstance (CMyProject*& pCMyProject)
+Error_t CVibrato::createInstance (CVibrato*& pCMyProject)
 {
-    pCMyProject = new CMyProject ();
+    pCMyProject = new CVibrato ();
     
     if (!pCMyProject)
         return kUnknownError;
@@ -46,7 +46,7 @@ Error_t CMyProject::createInstance (CMyProject*& pCMyProject)
     return kNoError;
 }
 
-Error_t CMyProject::destroyInstance (CMyProject*& pCMyProject)
+Error_t CVibrato::destroyInstance (CVibrato*& pCMyProject)
 {
     if (!pCMyProject)
         return kUnknownError;
@@ -60,7 +60,7 @@ Error_t CMyProject::destroyInstance (CMyProject*& pCMyProject)
     
 }
 
-Error_t CMyProject::initInstance( float fMaxModWidthInS, float fSampleRateInHz, int iNumChannels )
+Error_t CVibrato::initInstance( float fMaxModWidthInS, float fSampleRateInHz, int iNumChannels )
 {
     // set parameters
     m_fSampleRate       = fSampleRateInHz;
@@ -88,7 +88,7 @@ Error_t CMyProject::initInstance( float fMaxModWidthInS, float fSampleRateInHz, 
     return kNoError;
 }
 
-Error_t CMyProject::resetInstance ()
+Error_t CVibrato::resetInstance ()
 {
     for (int i = 0; i < kNumVibratoParams; i++)
         setParam((VibratoParam_t)i, 0);
@@ -106,7 +106,7 @@ Error_t CMyProject::resetInstance ()
     return kNoError;
 }
 
-Error_t CMyProject::setParam( VibratoParam_t eParam, float fParamValue )
+Error_t CVibrato::setParam( VibratoParam_t eParam, float fParamValue )
 {
     if (!m_bIsInitialized)
         return kNotInitializedError;
@@ -124,7 +124,7 @@ Error_t CMyProject::setParam( VibratoParam_t eParam, float fParamValue )
     return kNoError;
 }
 
-float CMyProject::getParam( VibratoParam_t eParam ) const
+float CVibrato::getParam( VibratoParam_t eParam ) const
 {
     switch (eParam)
     {
@@ -137,7 +137,7 @@ float CMyProject::getParam( VibratoParam_t eParam ) const
 }
 
 
-bool CMyProject::isInParamRange( VibratoParam_t eParam, float fValue )
+bool CVibrato::isInParamRange( VibratoParam_t eParam, float fValue )
 {
     if (fValue < m_aafParamRange[eParam][0] || fValue > m_aafParamRange[eParam][1])
     {
@@ -149,7 +149,7 @@ bool CMyProject::isInParamRange( VibratoParam_t eParam, float fValue )
     }
 }
 
-Error_t CMyProject::process( float **ppfInputBuffer, float **ppfOutputBuffer, int iNumberOfFrames )
+Error_t CVibrato::process( float **ppfInputBuffer, float **ppfOutputBuffer, int iNumberOfFrames )
 {
     if (!ppfInputBuffer || !ppfOutputBuffer || iNumberOfFrames < 0)
         return kFunctionInvalidArgsError;

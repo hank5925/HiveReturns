@@ -113,6 +113,7 @@
     {
         [sender setSelected:true];
         [sender setBackgroundColor:[UIColor colorWithHue:0.8 saturation:1.0 brightness:0.6 alpha:1]];
+        backEndInterface->setEffectStatus(1);
         m_bToggleVibratoStatus = true;
     } else
     {

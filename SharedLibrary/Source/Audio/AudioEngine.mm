@@ -42,8 +42,8 @@ void AudioEngine::stopAudioStreaming()
 }
 
 
-void AudioEngine::setEffectParam()
+void AudioEngine::setEffectParam(int effectID, int parameterID, float value)
 {
-    
+    liveAudioStream->setEffectParam(effectID, parameterID, value);
 }
 

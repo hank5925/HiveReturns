@@ -30,7 +30,7 @@ public:
 	
 	void audioDeviceAboutToStart (AudioIODevice* device) override;
     void audioDeviceStopped() override;
-    
+    void setEffectParam(int effectID, int parameterID, float value);
     
     
 private:

@@ -45,6 +45,24 @@ void AudioStream::audioDeviceStopped()
     
 }
 
+void setEffectParam(int effectID, int parameterID, float value)
+{
+    
+  
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
 //==============================================================================
 // Process Block
 // !!! Running on Audio Thread

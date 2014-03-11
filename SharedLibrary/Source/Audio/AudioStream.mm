@@ -14,6 +14,7 @@ AudioStream::AudioStream()
 {
     //--- Audio Device Settings ---//
     sharedAudioDeviceManager->getAudioDeviceSetup(deviceSetup);
+    vibratoStatus = false;
     
     // instantiate my effects here
     CVibrato::createInstance(pMyVibrato);
@@ -34,10 +35,6 @@ void AudioStream::audioDeviceAboutToStart(AudioIODevice* device)
     iNumChannel = 2;
     fSampleRate = device->getCurrentSampleRate();
     pMyVibrato->initInstance(0.25, fSampleRate , iNumChannel);
-    pMyVibrato->setParam(CVibrato::kParamModFreqInHz, 5);
-    pMyVibrato->setParam(CVibrato::kParamModWidthInS, 0.05);
-    
-    
 }
 
 void AudioStream::audioDeviceStopped()
@@ -45,21 +42,41 @@ void AudioStream::audioDeviceStopped()
     
 }
 
-void setEffectParam(int effectID, int parameterID, float value)
+void AudioStream::setEffectParam(int effectID, int parameterID, float value)
 {
-    
-  
-    
+    switch (effectID)
+    {
+        case 1:
+            if (parameterID == 1)
+            {
+                //value = 0~1
+                paramValue1 = value * (0.5);
+                pMyVibrato->setParam(CVibrato::kParamModWidthInS, paramValue1);
+            }
+            else if (parameterID == 2)
+            {
+                paramValue2 = value * (20);
+                pMyVibrato->setParam(CVibrato::kParamModFreqInHz, paramValue2);
+            }
+            break;
+            
+        default:
+            break;
+    }
 }
 
-
-
-
-
-
-
-
-
+void AudioStream::setEffectStatus(int effectID)
+{
+    switch (effectID)
+    {
+        case 1:
+            vibratoStatus = !vibratoStatus;
+            break;
+            
+        default:
+            break;
+    }
+}
 
 
 
@@ -74,18 +91,15 @@ void AudioStream::audioDeviceIOCallback(const float** inputChannelData,
                                         int totalNumOutputChannels,
                                         int blockSize)
 {
-    // switch effect cases here
-    
-    // if id/ status
-    // process (tmp out)
-    // else bypass (tmp out)
+    // put inputChannelData into buffer
     
     ppfInputBuff = new float *[totalNumInputChannels];
+    ppfOutputBuff = new float *[totalNumInputChannels];
     for (int i = 0; i < totalNumInputChannels; i++)
     {
         ppfInputBuff[i] = new float [blockSize];
+        ppfOutputBuff[i] = new float [blockSize];
     }
-    
     for (int sample = 0; sample < blockSize; sample++)
     {
         for (int channel = 0; channel < totalNumOutputChannels; channel++)
@@ -96,28 +110,44 @@ void AudioStream::audioDeviceIOCallback(const float** inputChannelData,
     }
     
     
-    // process by block
-    pMyVibrato->process(ppfInputBuff, outputChannelData, blockSize);
+    //  ================== process chain start ======================
+    if (vibratoStatus)
+    {
+        pMyVibrato->process(ppfInputBuff, ppfOutputBuff, blockSize);
+    }
+    else
+    {
+        for (int sample = 0; sample < blockSize; sample++)
+        {
+            for (int channel = 0; channel < totalNumOutputChannels; channel++)
+            {
+                ppfOutputBuff[channel][sample] = ppfInputBuff[channel][sample];
+            }
+        }
+    }
     
     
+    //  ================== process chain end ======================
     
+    
+    for (int sample = 0; sample < blockSize; sample++)
+    {
+        for (int channel = 0; channel < totalNumOutputChannels; channel++)
+        {
+            
+            outputChannelData[channel][sample] = ppfOutputBuff[channel][sample];
+        }
+    }
     
     // clean up the buffer
     for (int i = 0; i < totalNumInputChannels; i++)
     {
         delete ppfInputBuff[i];
+        delete ppfOutputBuff[i];
     }
     delete ppfInputBuff;
-    
-//    for (int sample = 0; sample < blockSize; sample++)
-//    {
-//        for (int channel = 0; channel < totalNumOutputChannels; channel++)
-//        {
-//            
-//            outputChannelData[channel][sample] = inputChannelData[channel][sample];
-//        }
-//    }
-//    
+    delete ppfOutputBuff;
+
     
 }
 

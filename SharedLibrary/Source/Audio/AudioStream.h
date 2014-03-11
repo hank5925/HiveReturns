@@ -31,16 +31,22 @@ public:
 	void audioDeviceAboutToStart (AudioIODevice* device) override;
     void audioDeviceStopped() override;
     void setEffectParam(int effectID, int parameterID, float value);
-    
+    void setEffectStatus(int effectID);
     
 private:
     
     AudioDeviceManager::AudioDeviceSetup        deviceSetup;
     CVibrato *pMyVibrato;
+    bool  vibratoStatus;
+    
     float **ppfInputBuff;
+    float **ppfOutputBuff;
     float fSampleRate;
     int   iNumChannel;
     
+    float paramValue1;
+    float paramValue2;
+    float paramValue3;
     // alloc my effects here
     
 };

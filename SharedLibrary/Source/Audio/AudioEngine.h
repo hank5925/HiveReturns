@@ -24,7 +24,7 @@ public:
     void startAudioStreaming();
     void stopAudioStreaming();
     void setEffectParam(int effectID, int parameterID, float value);
-
+    void setEffectStatus(int effectID);
     
     
 private:

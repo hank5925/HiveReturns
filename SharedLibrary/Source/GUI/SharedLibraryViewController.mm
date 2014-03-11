@@ -8,6 +8,8 @@
 
 #import "SharedLibraryViewController.h"
 
+#define SAMPLE_RATE 0.01
+
 @interface SharedLibraryViewController ()
 
 @end
@@ -19,10 +21,67 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    backEndInterface    =   new SharedLibraryInterface;
-    m_bAudioToggleStatus = false;
-    m_iRecordPlaybackStatus = 0;
+    
+    // Motion Manager Initialization
+    self.motionManager = [[CMMotionManager alloc] init];
+    
+    if (!self.motionManager.isDeviceMotionAvailable)
+    {
+        NSLog(@"Something wrong here...");
+        NSLog(@"viewDidLoad <-- SharedLibraryViewController");
+        return;
+    }
+    
+    self.motionManager.deviceMotionUpdateInterval = SAMPLE_RATE;
+    
+    [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMDeviceMotion *deviceMotion, NSError *error)
+     {
+         [self motionDeviceUpdate:deviceMotion];
+         if (error)
+         {
+             NSLog(@"%@", error);
+         }
+     }
+     ];
+    
+    // GUI
+    backEndInterface            = new SharedLibraryInterface;
+    m_bToggleStartStatus        = false;
+    m_bToggleVibratoStatus      = false;
+    m_bTogglePitchShiftStatus   = false;
+    m_bToggleDelayStatus        = false;
+    m_bToggleLowpassStatus      = false;
 }
+
+
+- (void)motionDeviceUpdate:(CMDeviceMotion *)deviceMotion
+{
+    backEndInterface->setParameter(1, 1, deviceMotion.attitude.roll);
+    backEndInterface->setParameter(1, 2, deviceMotion.attitude.pitch);
+    
+//    deviceMotion.attitude.roll;
+//    deviceMotion.attitude.pitch;
+//    deviceMotion.attitude.yaw;
+//    
+//    deviceMotion.userAcceleration.x;
+//    deviceMotion.userAcceleration.y;
+//    deviceMotion.userAcceleration.z;
+//
+//    deviceMotion.rotationRate.x;
+//    deviceMotion.rotationRate.y;
+//    deviceMotion.rotationRate.z;
+//    
+//    deviceMotion.attitude.quaternion.w;
+//    deviceMotion.attitude.quaternion.x;
+//    deviceMotion.attitude.quaternion.y;
+//    deviceMotion.attitude.quaternion.z;
+//    
+//    deviceMotion.gravity.x;
+//    deviceMotion.gravity.y;
+//    deviceMotion.gravity.z;
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -30,30 +89,91 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)toggleAudioButtonClicked:(UIButton *)sender
+
+- (IBAction)toggleStartButtonClicked:(UIButton *)sender
 {
-    if (!m_bAudioToggleStatus)
+    if (!m_bToggleStartStatus)
     {
+        [sender setSelected:true];
+        [sender setBackgroundColor:[UIColor colorWithHue:0.8 saturation:1.0 brightness:0.6 alpha:1]];
         backEndInterface->toggleAudioButtonClicked(true);
-        m_bAudioToggleStatus    =   true;
-    }
-    else
+        m_bToggleStartStatus    =   true;
+    } else
     {
+        [sender setSelected:false];
+        [sender setBackgroundColor:[UIColor colorWithHue:0.33 saturation:1.0 brightness:0.6 alpha:1]];
         backEndInterface->toggleAudioButtonClicked(false);
-        m_bAudioToggleStatus    =   false;
+        m_bToggleStartStatus    =   false;
     }
-    
+}
+
+- (IBAction)toggleVibratoButtonClicked:(UIButton *)sender
+{
+    if (!m_bToggleVibratoStatus)
+    {
+        [sender setSelected:true];
+        [sender setBackgroundColor:[UIColor colorWithHue:0.8 saturation:1.0 brightness:0.6 alpha:1]];
+        m_bToggleVibratoStatus = true;
+    } else
+    {
+        [sender setSelected:false];
+        [sender setBackgroundColor:[UIColor colorWithHue:0.5 saturation:1.0 brightness:0.6 alpha:1]];
+        m_bToggleVibratoStatus = false;
+    }
+}
+- (IBAction)togglePitchShiftButtonClicked:(UIButton *)sender
+{
+    if (!m_bTogglePitchShiftStatus)
+    {
+        [sender setSelected:true];
+        [sender setBackgroundColor:[UIColor colorWithHue:0.8 saturation:1.0 brightness:0.6 alpha:1]];
+        m_bTogglePitchShiftStatus = true;
+    } else
+    {
+        [sender setSelected:false];
+        [sender setBackgroundColor:[UIColor colorWithHue:0.5 saturation:1.0 brightness:0.6 alpha:1]];
+        m_bTogglePitchShiftStatus = false;
+    }
+}
+- (IBAction)toggleDelayButtonClicked:(UIButton *)sender
+{
+    if (!m_bToggleDelayStatus)
+    {
+        [sender setSelected:true];
+        [sender setBackgroundColor:[UIColor colorWithHue:0.8 saturation:1.0 brightness:0.6 alpha:1]];
+        m_bToggleDelayStatus = true;
+    } else
+    {
+        [sender setSelected:false];
+        [sender setBackgroundColor:[UIColor colorWithHue:0.5 saturation:1.0 brightness:0.6 alpha:1]];
+        m_bToggleDelayStatus = false;
+    }
+}
+- (IBAction)toggleLowpassButtonClicked:(UIButton *)sender
+{
+    if (!m_bToggleLowpassStatus)
+    {
+        [sender setSelected:true];
+        [sender setBackgroundColor:[UIColor colorWithHue:0.8 saturation:1.0 brightness:0.6 alpha:1]];
+        m_bToggleLowpassStatus = true;
+    } else
+    {
+        [sender setSelected:false];
+        [sender setBackgroundColor:[UIColor colorWithHue:0.5 saturation:1.0 brightness:0.6 alpha:1]];
+        m_bToggleLowpassStatus = false;
+    }
 }
 
 
 - (void)dealloc
 {
-    
-    [_toggleAudioButton release];
-    
-        
     delete backEndInterface;
     
+    [_toggleVibratoButton release];
+    [_togglePitchShiftButton release];
+    [_toggleDelayButton release];
+    [_toggleLowpassButton release];
+    [_toggleStartButton release];
     [super dealloc];
 }
 @end

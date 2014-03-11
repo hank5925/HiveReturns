@@ -10,6 +10,8 @@
 		04B7B1B018CB1BA6009CBBC1 /* AudioRecorder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 04B7B1AE18CB1BA6009CBBC1 /* AudioRecorder.mm */; };
 		04D888F018CEBC65009DC2C3 /* AudioDelay.mm in Sources */ = {isa = PBXBuildFile; fileRef = 04D888EE18CEBC65009DC2C3 /* AudioDelay.mm */; };
 		04F1DD6218CE4AFC00C4F6A0 /* AudioVibrato.mm in Sources */ = {isa = PBXBuildFile; fileRef = 04F1DD6018CE4AFC00C4F6A0 /* AudioVibrato.mm */; };
+		98AEE34C18CEBF3400EF7B5E /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 98AEE34A18CEBF3400EF7B5E /* test.png */; };
+		98AEE34D18CEBF3400EF7B5E /* test2.png in Resources */ = {isa = PBXBuildFile; fileRef = 98AEE34B18CEBF3400EF7B5E /* test2.png */; };
 		FCE6E09518CB00EF00D6D1A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE6E09418CB00EF00D6D1A3 /* Foundation.framework */; };
 		FCE6E09718CB00EF00D6D1A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE6E09618CB00EF00D6D1A3 /* CoreGraphics.framework */; };
 		FCE6E09918CB00EF00D6D1A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE6E09818CB00EF00D6D1A3 /* UIKit.framework */; };
@@ -65,6 +67,8 @@
 		04F1DD7018CE4E3800C4F6A0 /* Lfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lfo.h; sourceTree = "<group>"; };
 		04F1DD7318CE4E6900C4F6A0 /* SignalGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignalGen.h; sourceTree = "<group>"; };
 		04F1DD7518CE78F300C4F6A0 /* AudioEffects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioEffects.h; sourceTree = "<group>"; };
+		98AEE34A18CEBF3400EF7B5E /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test.png; path = ../../../../../../../../../Desktop/test.png; sourceTree = "<group>"; };
+		98AEE34B18CEBF3400EF7B5E /* test2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test2.png; path = ../../../../../../../../../Desktop/test2.png; sourceTree = "<group>"; };
 		FCE6E09118CB00EF00D6D1A3 /* SharedLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharedLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCE6E09418CB00EF00D6D1A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FCE6E09618CB00EF00D6D1A3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1167,6 +1171,8 @@
 		FCE6E0CF18CB019F00D6D1A3 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				98AEE34A18CEBF3400EF7B5E /* test.png */,
+				98AEE34B18CEBF3400EF7B5E /* test2.png */,
 				FCE6E0D018CB019F00D6D1A3 /* MainStoryboard.storyboard */,
 				FCE6E0D218CB019F00D6D1A3 /* SharedLibraryViewController.h */,
 				FCE6E0D318CB019F00D6D1A3 /* SharedLibraryViewController.mm */,
@@ -2981,8 +2987,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCE6E0EE18CB025300D6D1A3 /* MainStoryboard.storyboard in Resources */,
+				98AEE34D18CEBF3400EF7B5E /* test2.png in Resources */,
 				FCE6E0DF18CB01B200D6D1A3 /* InfoPlist.strings in Resources */,
 				FCE6E0D518CB019F00D6D1A3 /* Images.xcassets in Resources */,
+				98AEE34C18CEBF3400EF7B5E /* test.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

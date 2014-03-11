@@ -21,7 +21,7 @@ public:
     void toggleAudioButtonClicked(bool toggleStatus);
     
     void setParameter(int effectID, int parameterID, float value);
-    
+    void setEffectStatus(int effectID);
 private:
     
     AudioEngine*    audioEngine;

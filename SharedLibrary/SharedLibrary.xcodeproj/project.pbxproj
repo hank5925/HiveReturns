@@ -67,8 +67,8 @@
 		04F1DD7018CE4E3800C4F6A0 /* Lfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lfo.h; sourceTree = "<group>"; };
 		04F1DD7318CE4E6900C4F6A0 /* SignalGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignalGen.h; sourceTree = "<group>"; };
 		04F1DD7518CE78F300C4F6A0 /* AudioEffects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioEffects.h; sourceTree = "<group>"; };
-		98AEE34A18CEBF3400EF7B5E /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test.png; path = ../../../../../../../../../Desktop/test.png; sourceTree = "<group>"; };
-		98AEE34B18CEBF3400EF7B5E /* test2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test2.png; path = ../../../../../../../../../Desktop/test2.png; sourceTree = "<group>"; };
+		98AEE34A18CEBF3400EF7B5E /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test.png; path = ../../../test.png; sourceTree = "<group>"; };
+		98AEE34B18CEBF3400EF7B5E /* test2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test2.png; path = ../../../test2.png; sourceTree = "<group>"; };
 		FCE6E09118CB00EF00D6D1A3 /* SharedLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharedLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCE6E09418CB00EF00D6D1A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FCE6E09618CB00EF00D6D1A3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };

@@ -47,3 +47,7 @@ void SharedLibraryInterface::setEffectStatus(int effectID)
     audioEngine->setEffectStatus(effectID);
 }
 
+void SharedLibraryInterface::setMicrophoneGain(float value)
+{
+    //audioEngine->setMicGain(value);
+}

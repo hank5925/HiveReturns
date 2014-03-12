@@ -20,6 +20,8 @@
     bool m_bTogglePitchShiftStatus;
     bool m_bToggleDelayStatus;
     bool m_bToggleLowpassStatus;
+    
+    float m_fGainValue;
 }
 
 // Core Motion
@@ -42,6 +44,8 @@
 @property (retain, nonatomic) IBOutlet UIButton *toggleLowpassButton;
 - (IBAction)toggleLowpassButtonClicked:(UIButton *)sender;
 
+@property (retain, nonatomic) IBOutlet UISlider *gainSlider;
+- (IBAction)gainSliderChanged:(UISlider *)sender;
 
 
 

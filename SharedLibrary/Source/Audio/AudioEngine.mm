@@ -54,5 +54,11 @@ void AudioEngine::setEffectStatus(int effectID)
 }
 
 
+void AudioEngine::setMicGain(float micGainValue)
+{
+    liveAudioStream->setMicGain(micGainValue);
+}
+
+
 
 

@@ -53,11 +53,12 @@
     m_bToggleDelayStatus        = false;
     m_bToggleLowpassStatus      = false;
     
-
+    m_fGainValue                = 1.f;
 }
 
 
 
+// Motion Capture
 - (void)motionDeviceUpdate:(CMDeviceMotion *)deviceMotion
 {
     /*
@@ -117,16 +118,15 @@
 
 - (IBAction)toggleStartButtonClicked:(UIButton *)sender
 {
+    [sender setImage:[UIImage imageNamed:@"test5.png"] forState:UIControlStateSelected | UIControlStateHighlighted];
     if (!m_bToggleStartStatus)
     {
         [sender setSelected:true];
-        [sender setBackgroundColor:[UIColor colorWithHue:0.8 saturation:1.0 brightness:0.6 alpha:1]];
         backEndInterface->toggleAudioButtonClicked(true);
         m_bToggleStartStatus    =   true;
     } else
     {
         [sender setSelected:false];
-        [sender setBackgroundColor:[UIColor colorWithHue:0.33 saturation:1.0 brightness:0.6 alpha:1]];
         backEndInterface->toggleAudioButtonClicked(false);
         m_bToggleStartStatus    =   false;
     }
@@ -134,65 +134,67 @@
 
 - (IBAction)toggleVibratoButtonClicked:(UIButton *)sender
 {
+    [sender setImage:[UIImage imageNamed:@"test5-1.png"] forState:UIControlStateSelected | UIControlStateHighlighted];
     if (!m_bToggleVibratoStatus)
     {
         [sender setSelected:true];
-        [sender setBackgroundColor:[UIColor colorWithHue:0.8 saturation:1.0 brightness:0.6 alpha:1]];
         backEndInterface->setEffectStatus(1);
         m_bToggleVibratoStatus = true;
     } else
     {
         [sender setSelected:false];
-        [sender setBackgroundColor:[UIColor colorWithHue:0.5 saturation:1.0 brightness:0.6 alpha:1]];
         backEndInterface->setEffectStatus(1);
         m_bToggleVibratoStatus = false;
     }
 }
 - (IBAction)togglePitchShiftButtonClicked:(UIButton *)sender
 {
+    [sender setImage:[UIImage imageNamed:@"test5-2.png"] forState:UIControlStateSelected | UIControlStateHighlighted];
     if (!m_bTogglePitchShiftStatus)
     {
         [sender setSelected:true];
-        [sender setBackgroundColor:[UIColor colorWithHue:0.8 saturation:1.0 brightness:0.6 alpha:1]];
         m_bTogglePitchShiftStatus = true;
     } else
     {
         [sender setSelected:false];
-        [sender setBackgroundColor:[UIColor colorWithHue:0.5 saturation:1.0 brightness:0.6 alpha:1]];
         m_bTogglePitchShiftStatus = false;
     }
 }
 - (IBAction)toggleDelayButtonClicked:(UIButton *)sender
 {
+    [sender setImage:[UIImage imageNamed:@"test5-3.png"] forState:UIControlStateSelected | UIControlStateHighlighted];
     if (!m_bToggleDelayStatus)
     {
         [sender setSelected:true];
-        [sender setBackgroundColor:[UIColor colorWithHue:0.8 saturation:1.0 brightness:0.6 alpha:1]];
         backEndInterface->setEffectStatus(2);
         m_bToggleDelayStatus = true;
     } else
     {
         [sender setSelected:false];
-        [sender setBackgroundColor:[UIColor colorWithHue:0.5 saturation:1.0 brightness:0.6 alpha:1]];
         backEndInterface->setEffectStatus(2);
         m_bToggleDelayStatus = false;
     }
 }
 - (IBAction)toggleLowpassButtonClicked:(UIButton *)sender
 {
+    [sender setImage:[UIImage imageNamed:@"test5-4.png"] forState:UIControlStateSelected | UIControlStateHighlighted];
     if (!m_bToggleLowpassStatus)
     {
         [sender setSelected:true];
-        [sender setBackgroundColor:[UIColor colorWithHue:0.8 saturation:1.0 brightness:0.6 alpha:1]];
         m_bToggleLowpassStatus = true;
     } else
     {
         [sender setSelected:false];
-        [sender setBackgroundColor:[UIColor colorWithHue:0.5 saturation:1.0 brightness:0.6 alpha:1]];
         m_bToggleLowpassStatus = false;
     }
 }
 
+
+- (IBAction)gainSliderChanged:(UISlider *)sender
+{
+    m_fGainValue = [sender value];
+    backEndInterface->setMicrophoneGain(m_fGainValue);
+}
 
 - (void)dealloc
 {
@@ -203,6 +205,8 @@
     [_toggleDelayButton release];
     [_toggleLowpassButton release];
     [_toggleStartButton release];
+    [_gainSlider release];
     [super dealloc];
 }
+
 @end

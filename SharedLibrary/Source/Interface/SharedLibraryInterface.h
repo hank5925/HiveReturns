@@ -22,6 +22,7 @@ public:
     
     void setParameter(int effectID, int parameterID, float value);
     void setEffectStatus(int effectID);
+    void setMicrophoneGain(float value);
 private:
     
     AudioEngine*    audioEngine;

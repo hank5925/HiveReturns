@@ -14,13 +14,17 @@ AudioStream::AudioStream()
 {
     //--- Audio Device Settings ---//
     sharedAudioDeviceManager->getAudioDeviceSetup(deviceSetup);
+    
+    // initial values
     vibratoStatus = false;
     delayStatus   = false;
+    iNumChannel = 2;
+    inputMicGain = 1.0;
     
     // instantiate my effects here
     CVibrato::createInstance(pMyVibrato);
-    iNumChannel = 2;
     pMyDelay = new CDelay(iNumChannel);
+
 
 }
 
@@ -70,12 +74,12 @@ void AudioStream::setEffectParam(int effectID, int parameterID, float value)
         case 2: //delay
             if (parameterID == 1)
             {
-                paramValue1 = value * (1);
+                paramValue1 = value * (1.0); //delay time in sec
                 pMyDelay->setParam(0, paramValue1);
             }
             else if (parameterID == 2)
             {
-                paramValue2 = value * (0.8);
+                paramValue2 = value * (0.8); //feedback gain
                 pMyDelay->setParam(1, paramValue2);
             }
             
@@ -99,6 +103,10 @@ void AudioStream::setEffectStatus(int effectID)
     }
 }
 
+void AudioStream::setMicGain(float newGainValue)
+{
+    inputMicGain = newGainValue;
+}
 
 
 //==============================================================================
@@ -112,21 +120,13 @@ void AudioStream::audioDeviceIOCallback(const float** inputChannelData,
                                         int totalNumOutputChannels,
                                         int blockSize)
 {
+ 
     // put inputChannelData into buffer
-    
-    ppfInputBuff = new float *[totalNumInputChannels];
-    ppfOutputBuff = new float *[totalNumInputChannels];
-    for (int i = 0; i < totalNumInputChannels; i++)
-    {
-        ppfInputBuff[i] = new float [blockSize];
-        ppfOutputBuff[i] = new float [blockSize];
-    }
     for (int sample = 0; sample < blockSize; sample++)
     {
         for (int channel = 0; channel < totalNumOutputChannels; channel++)
         {
-            
-            ppfInputBuff[channel][sample] = inputChannelData[channel][sample];
+            outputChannelData[channel][sample] = inputMicGain * inputChannelData[channel][sample];
         }
     }
     
@@ -135,46 +135,17 @@ void AudioStream::audioDeviceIOCallback(const float** inputChannelData,
     // ======== effect 1
     if (vibratoStatus)
     {
-        pMyVibrato->process(ppfInputBuff, ppfOutputBuff, blockSize);
+        pMyVibrato->process(outputChannelData, outputChannelData, blockSize);
     }
-    else
-    {
-        for (int sample = 0; sample < blockSize; sample++)
-        {
-            for (int channel = 0; channel < totalNumOutputChannels; channel++)
-            {
-                ppfOutputBuff[channel][sample] = ppfInputBuff[channel][sample];
-            }
-        }
-    }
+
     
     // ======== effect 2
     if (delayStatus)
     {
-        pMyDelay->process(ppfOutputBuff, blockSize, false);
+        pMyDelay->process(outputChannelData, blockSize, false);
     }
 
     //  ================== process chain end ======================
-    
-    
-    for (int sample = 0; sample < blockSize; sample++)
-    {
-        for (int channel = 0; channel < totalNumOutputChannels; channel++)
-        {
-            
-            outputChannelData[channel][sample] = ppfOutputBuff[channel][sample];
-        }
-    }
-    
-    // clean up the buffer
-    for (int i = 0; i < totalNumInputChannels; i++)
-    {
-        delete ppfInputBuff[i];
-        delete ppfOutputBuff[i];
-    }
-    delete ppfInputBuff;
-    delete ppfOutputBuff;
-
     
 }
 

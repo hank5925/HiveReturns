@@ -11,6 +11,7 @@
 
 #include "SharedLibraryHeader.h"
 #include "AudioEffects.h"
+#include <cfloat>
 
 class AudioStream   :   public AudioIODeviceCallback
 {
@@ -32,6 +33,7 @@ public:
     void audioDeviceStopped() override;
     void setEffectParam(int effectID, int parameterID, float value);
     void setEffectStatus(int effectID);
+    void setMicGain(float newGainValue);
     
 private:
     
@@ -42,10 +44,10 @@ private:
     CDelay *pMyDelay;
     bool  delayStatus;
     
-    float **ppfInputBuff;
-    float **ppfOutputBuff;
     float fSampleRate;
     int   iNumChannel;
+    float **ppfOutputBuffer;
+    float inputMicGain;
     
     float paramValue1;
     float paramValue2;

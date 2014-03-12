@@ -25,14 +25,13 @@ public:
     void stopAudioStreaming();
     void setEffectParam(int effectID, int parameterID, float value);
     void setEffectStatus(int effectID);
+    void setMicGain(float micGainValue);
     
     
 private:
     String filePath;
     ScopedPointer<AudioStream>  liveAudioStream;
-    
-    //some effect param here?
-    
+        
 };
 
 #endif /* defined(__SharedLibrary__AudioEngine__) */

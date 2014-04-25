@@ -13,7 +13,7 @@
 #define __CDelay_hdr__
 
 #include "RingBuffer.h"
-#define MAX_DELAY 100000
+#define MAX_DELAY 88200
 
 /*	Fractional Delay
  ----------------
@@ -70,10 +70,6 @@ private:
 	float wetDry;
 	float delayTime;
 	float maxDelayTimeInS;
-    
-	float feedBack_target;
-	float wetDry_target;
-	float delayTime_target;
 };
 
 #endif

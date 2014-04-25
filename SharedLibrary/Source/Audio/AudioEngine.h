@@ -3,6 +3,7 @@
 //  SharedLibrary
 //
 //  Created by Govinda Ram Pingali on 3/8/14.
+//  Modified by Chih-Wei Wu
 //  Copyright (c) 2014 GTCMT. All rights reserved.
 //
 

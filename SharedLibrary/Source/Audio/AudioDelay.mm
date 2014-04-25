@@ -8,21 +8,18 @@
 
 #include "AudioDelay.h"
 
-CDelay::CDelay(int numChannels) : numChannels(numChannels)
+CDelay::CDelay(int numChannels):
+numChannels(numChannels)
 {
 	feedBack = 0;
 	wetDry = 0;
-    sampleRate = 0;
 	ringBuffer = new CRingBuffer<float> *[numChannels];
-    
 	for (int n = 0; n < numChannels; n++)
 	{
 		ringBuffer[n]	= new CRingBuffer<float>((int)(MAX_DELAY));
-		// set indices and buffer contents to zero:
+        // set indices and buffer contents to zero:
 		ringBuffer[n]->resetInstance();
 	};
-    
-	delayTime = 0;
     
 	initDefaults();
 };
@@ -30,7 +27,7 @@ CDelay::CDelay(int numChannels) : numChannels(numChannels)
 void CDelay::initDefaults()
 {
 	setFeedback(0.5);
-	setDelayTime(0.5);
+	setDelayTime(0.1);
 	setWetDry(0.5);
 }
 
@@ -38,6 +35,7 @@ void CDelay::setSampleRate(float smplRate)
 {
 	if (smplRate >0)
 		sampleRate = smplRate;
+    this->setMaxDelay(round(MAX_DELAY/smplRate)); // in second
 }
 
 void CDelay::setChanNum(int numChan)
@@ -50,13 +48,25 @@ void CDelay::setDelayTime(float delay)
 {
 	if (delay >= 0)
 	{
-		if (delay <= getMaxDelay())
+//		if (delay <= getMaxDelay())
+//		{
+//			delayTime = delay;
+//			// set the read index of each ring buffer to the correct index:
+//			for (int n = 0; n < numChannels; n++)
+//				ringBuffer[n]->setReadIdx(-(int)((delay/getMaxDelay())*getSampleRate()));
+//		};
+        if (delay <= getMaxDelay())
 		{
 			delayTime = delay;
-			// set the read index of each ring buffer to the correct index:
+			// set the read index of each ring buffer to the correct index
 			for (int n = 0; n < numChannels; n++)
-				ringBuffer[n]->setReadIdx(-(int)((delay/getMaxDelay())*getSampleRate()));
+            {
+                int curWriteIdx = ringBuffer[n]->getWriteIdx();
+				ringBuffer[n]->setReadIdx(curWriteIdx - (int)(delay * getSampleRate()));
+            }
 		};
+
+        
 	};
 }
 
@@ -109,35 +119,26 @@ void CDelay::process(float **inputBuffer, int numFrames, bool bypass)
 	{
 		for (int c = 0; c < numChannels; c++)
 		{
-			// ugly looking equation for fractional delay:
-			inputBuffer[c][i] =	(1-getWetDry())*(inputBuffer[c][i])
-            + getFeedback()*getWetDry()*((ringBuffer[c]->getPostInc())*(getDelay()*getSampleRate()-(int)(getDelay()*getSampleRate()))
-                                         + (ringBuffer[c]->get())*(1-getDelay()*getSampleRate()+(int)(getDelay()*getSampleRate())));
+//			// ugly looking equation for fractional delay:
+//			inputBuffer[c][i] =	(1-getWetDry())*(inputBuffer[c][i])
+//            + getFeedback()*getWetDry()*((ringBuffer[c]->getPostInc())*(getDelay()*getSampleRate()-(int)(getDelay()*getSampleRate()))
+//                                         + (ringBuffer[c]->get())*(1-getDelay()*getSampleRate()+(int)(getDelay()*getSampleRate())));
+//            
+//			// outputBuffer[c][i] =	(1-getWetDry())*(inputBuffer[c][i])
+//			//						 + 0.5*getWetDry()*(ringBuffer[c]->getPostInc());
+//            
+//			// add the output value to the ring buffer:
             
-			// outputBuffer[c][i] =	(1-getWetDry())*(inputBuffer[c][i])
-			//						 + 0.5*getWetDry()*(ringBuffer[c]->getPostInc());
+            int offset = delayTime * sampleRate;
+            ringBuffer[c]->setReadIdx(ringBuffer[c]->getWriteIdx() - offset);
             
-			// add the output value to the ring buffer:
+            inputBuffer[c][i] = (1 - getWetDry()) * inputBuffer[c][i] + getFeedback() * getWetDry() * ringBuffer[c]->getPostInc();
+            
 			ringBuffer[c]->putPostInc(inputBuffer[c][i]);
 		};
 	};
 }
 
-//float CDelay::getParam(/*hFile::enumType type*/ int type)
-//{
-//	switch(type)
-//	{
-//		case 0:
-//			return delayTime_target;
-//            break;
-//		case 1:
-//			return feedBack_target;
-//            break;
-//		case 2:
-//			return wetDry_target;
-//            break;
-//	};
-//}
 
 int CDelay::getSampleRate()
 {

@@ -2,7 +2,7 @@
 //  SharedLibraryViewController.m
 //  SharedLibrary
 //
-//  Created by Govinda Ram Pingali on 3/8/14.
+//  Created by Ying-Shu Kuo on 3/8/14.
 //  Copyright (c) 2014 GTCMT. All rights reserved.
 //
 

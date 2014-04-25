@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		045E443B190A05FC00C52C78 /* AudioLowpass.mm in Sources */ = {isa = PBXBuildFile; fileRef = 045E4439190A05FC00C52C78 /* AudioLowpass.mm */; };
 		04B7B1B018CB1BA6009CBBC1 /* AudioRecorder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 04B7B1AE18CB1BA6009CBBC1 /* AudioRecorder.mm */; };
 		04D888F018CEBC65009DC2C3 /* AudioDelay.mm in Sources */ = {isa = PBXBuildFile; fileRef = 04D888EE18CEBC65009DC2C3 /* AudioDelay.mm */; };
 		04F1DD6218CE4AFC00C4F6A0 /* AudioVibrato.mm in Sources */ = {isa = PBXBuildFile; fileRef = 04F1DD6018CE4AFC00C4F6A0 /* AudioVibrato.mm */; };
@@ -68,6 +69,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		045E4439190A05FC00C52C78 /* AudioLowpass.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioLowpass.mm; sourceTree = "<group>"; };
+		045E443A190A05FC00C52C78 /* AudioLowpass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioLowpass.h; sourceTree = "<group>"; };
 		04B7B1AE18CB1BA6009CBBC1 /* AudioRecorder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioRecorder.mm; sourceTree = "<group>"; };
 		04B7B1AF18CB1BA6009CBBC1 /* AudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioRecorder.h; sourceTree = "<group>"; };
 		04D888EE18CEBC65009DC2C3 /* AudioDelay.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioDelay.mm; sourceTree = "<group>"; };
@@ -1212,6 +1215,8 @@
 				04F1DD7518CE78F300C4F6A0 /* AudioEffects.h */,
 				04D888EE18CEBC65009DC2C3 /* AudioDelay.mm */,
 				04D888EF18CEBC65009DC2C3 /* AudioDelay.h */,
+				045E4439190A05FC00C52C78 /* AudioLowpass.mm */,
+				045E443A190A05FC00C52C78 /* AudioLowpass.h */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -3080,6 +3085,7 @@
 				FCE6E50E18CB03AF00D6D1A3 /* juce_cryptography.mm in Sources */,
 				FCE6E50F18CB03AF00D6D1A3 /* juce_data_structures.mm in Sources */,
 				FCE6E51618CB058300D6D1A3 /* AudioEngine.mm in Sources */,
+				045E443B190A05FC00C52C78 /* AudioLowpass.mm in Sources */,
 				04B7B1B018CB1BA6009CBBC1 /* AudioRecorder.mm in Sources */,
 				FCE6E51018CB03AF00D6D1A3 /* juce_events.mm in Sources */,
 				FCE6E51118CB03AF00D6D1A3 /* juce_graphics.mm in Sources */,

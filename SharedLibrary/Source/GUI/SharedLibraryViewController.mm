@@ -75,11 +75,29 @@
                 ranges from -pi to pi, righty minus lefty plus
                 a glitch happens when pi changes to -pi with slight spin
      */
+    if (m_bToggleVibratoStatus)
+    {
+        backEndInterface->setParameter(1, 1, (deviceMotion.attitude.roll + M_PI) / (M_PI * 2.f));
+        backEndInterface->setParameter(1, 2, (deviceMotion.attitude.pitch + M_PI) / (M_PI));
+    }
+    if (m_bToggleDelayStatus)
+    {
+        backEndInterface->setParameter(2, 1, (deviceMotion.attitude.roll + M_PI) / (M_PI * 2.f));
+        backEndInterface->setParameter(2, 2, (deviceMotion.attitude.pitch + M_PI) / (M_PI));
+    }
+    if (m_bToggleLowpassStatus)
+    {
+        backEndInterface->setParameter(3, 1, (deviceMotion.attitude.roll + M_PI) / (M_PI * 2.f));
+        backEndInterface->setParameter(3, 2, (deviceMotion.attitude.pitch + M_PI) / (M_PI));
+    }
+    if (m_bTogglePitchShiftStatus)
+    {
+        backEndInterface->setParameter(4, 1, (deviceMotion.attitude.roll + M_PI) / (M_PI * 2.f));
+        backEndInterface->setParameter(4, 2, (deviceMotion.attitude.pitch + M_PI) / (M_PI));
+    }
     
-    backEndInterface->setParameter(1, 1, (deviceMotion.attitude.roll + M_PI) / (M_PI * 2.f));
-    backEndInterface->setParameter(1, 2, (deviceMotion.attitude.pitch + M_PI) / (M_PI));
-    backEndInterface->setParameter(2, 1, 1 / (1 + expf(deviceMotion.userAcceleration.x)));
-    backEndInterface->setParameter(2, 2, 1 / (1 + expf(deviceMotion.userAcceleration.y)));
+//    backEndInterface->setParameter(2, 1, 1 / (1 + expf(deviceMotion.userAcceleration.x)));
+//    backEndInterface->setParameter(2, 2, 1 / (1 + expf(deviceMotion.userAcceleration.y)));
     
 //    std::cout   << deviceMotion.attitude.roll << " "
 //                << deviceMotion.attitude.pitch << " "
@@ -181,10 +199,12 @@
     if (!m_bToggleLowpassStatus)
     {
         [sender setSelected:true];
+        backEndInterface->setEffectStatus(3);
         m_bToggleLowpassStatus = true;
     } else
     {
         [sender setSelected:false];
+        backEndInterface->setEffectStatus(3);
         m_bToggleLowpassStatus = false;
     }
 }

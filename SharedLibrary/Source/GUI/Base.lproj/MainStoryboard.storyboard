@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -23,7 +23,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="顫音音色" backgroundImage="test3-1.png"/>
                                 <state key="disabled" backgroundImage="test5-1.png"/>
-                                <state key="selected" title="Vibrato" backgroundImage="test4-1.png"/>
+                                <state key="selected" backgroundImage="test4-1.png"/>
                                 <state key="highlighted" backgroundImage="test5-1.png"/>
                                 <connections>
                                     <action selector="toggleVibratoButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="kfU-pe-aYg"/>

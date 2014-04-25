@@ -36,7 +36,6 @@ public:
 	void finishPlaying();
     
 	void initDefaults();
-    
 	void setSampleRate(float sampleRate);
 	void setChanNum(int numChan);
 	void setDelayFeedback(float feedback);
@@ -44,10 +43,6 @@ public:
 	void setWetDry(float mix);
 	void setMaxDelay(float delay);
 	void setFeedback(float fdBack);
-	
-	// get:
-	//float getParam(/*hFile::enumType type*/ int type);
-    
 	float getMaxDelay();
 	float getWetDry();
 	float getDelay();
@@ -57,7 +52,7 @@ public:
 	void process(float **inputBuffer, int numFrames, bool bypass);
     
 	void reset();
-	~CDelay () {};
+	~CDelay ();
     
 private:
     

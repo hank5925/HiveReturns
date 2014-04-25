@@ -40,9 +40,11 @@ private:
     AudioDeviceManager::AudioDeviceSetup        deviceSetup;
     CVibrato *pMyVibrato;
     bool  vibratoStatus;
-    
     CDelay *pMyDelay;
     bool  delayStatus;
+    CLPF   *pMyLPF;
+    bool  lowpassStatus;
+    
     
     float fSampleRate;
     int   iNumChannel;

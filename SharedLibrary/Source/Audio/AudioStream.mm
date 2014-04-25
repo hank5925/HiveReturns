@@ -18,13 +18,14 @@ AudioStream::AudioStream()
     // initial values
     vibratoStatus = false;
     delayStatus   = false;
+    lowpassStatus = false;
     iNumChannel = 2;
     inputMicGain = 1.0;
     
     // instantiate my effects here
     CVibrato::createInstance(pMyVibrato);
     pMyDelay = new CDelay(iNumChannel);
-
+    pMyLPF   = new CLPF(iNumChannel);
 
 }
 
@@ -35,6 +36,7 @@ AudioStream::~AudioStream()
     // destroy instances here
     CVibrato::destroyInstance(pMyVibrato);
     delete pMyDelay;
+    delete pMyLPF;
 }
 
 void AudioStream::audioDeviceAboutToStart(AudioIODevice* device)
@@ -42,10 +44,7 @@ void AudioStream::audioDeviceAboutToStart(AudioIODevice* device)
     // init effects
     fSampleRate = device->getCurrentSampleRate();
     pMyVibrato->initInstance(0.25, fSampleRate , iNumChannel);
-    pMyDelay->initDefaults();
     pMyDelay->setSampleRate(fSampleRate);
-    
-    
 }
 
 void AudioStream::audioDeviceStopped()
@@ -64,23 +63,36 @@ void AudioStream::setEffectParam(int effectID, int parameterID, float value)
                 paramValue1 = value * (0.01);
                 pMyVibrato->setParam(CVibrato::kParamModWidthInS, paramValue1);
             }
-            else if (parameterID == 2)
+            if (parameterID == 2)
             {
                 paramValue2 = value * (10);
                 pMyVibrato->setParam(CVibrato::kParamModFreqInHz, paramValue2);
             }
             break;
             
-        case 2: //delay
+        case 2: //delay //need to fix the mapping values
             if (parameterID == 1)
             {
                 paramValue1 = value * (1.0); //delay time in sec
-                pMyDelay->setParam(0, paramValue1);
+                pMyDelay->setDelayTime(paramValue1);
+
             }
-            else if (parameterID == 2)
+            if (parameterID == 2)
             {
                 paramValue2 = value * (0.8); //feedback gain
-                pMyDelay->setParam(1, paramValue2);
+                pMyDelay->setFeedback(paramValue2);
+            }
+            
+        case 3: //lowpass filter
+            if (parameterID == 1)
+            {
+                paramValue1 = value * 0.5;
+                pMyLPF->setCutoff(paramValue1);
+            }
+            if (parameterID == 2)
+            {
+                paramValue2 = value * 0.05; //no mapping
+                //pMyLPF->setCutoff(paramValue2);
             }
             
         default:
@@ -98,6 +110,10 @@ void AudioStream::setEffectStatus(int effectID)
         case 2:
             delayStatus = !delayStatus;
             break;
+        case 3:
+            lowpassStatus = !lowpassStatus;
+            break;
+            
         default:
             break;
     }
@@ -144,6 +160,13 @@ void AudioStream::audioDeviceIOCallback(const float** inputChannelData,
     {
         pMyDelay->process(outputChannelData, blockSize, false);
     }
+    
+    // ======== effect 3
+    if (lowpassStatus)
+    {
+        pMyLPF->process(outputChannelData, outputChannelData, blockSize);
+    }
+    
 
     //  ================== process chain end ======================
     

@@ -14,7 +14,7 @@
 #include "AudioVibrato.h"
 #include "AudioDelay.h"
 #include "AudioLowpass.h"
-
+#include "AudioRing.h"
 
 
 #endif

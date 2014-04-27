@@ -44,6 +44,8 @@ private:
     bool  delayStatus;
     CLPF   *pMyLPF;
     bool  lowpassStatus;
+    CRingModulator *pMyRingModulator;
+    bool  ringModulatorStatus;
     
     
     float fSampleRate;

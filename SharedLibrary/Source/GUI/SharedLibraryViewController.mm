@@ -171,10 +171,12 @@
     if (!m_bTogglePitchShiftStatus)
     {
         [sender setSelected:true];
+        backEndInterface->setEffectStatus(4);
         m_bTogglePitchShiftStatus = true;
     } else
     {
         [sender setSelected:false];
+        backEndInterface->setEffectStatus(4);
         m_bTogglePitchShiftStatus = false;
     }
 }

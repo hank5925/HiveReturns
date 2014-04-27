@@ -16,9 +16,10 @@ AudioStream::AudioStream()
     sharedAudioDeviceManager->getAudioDeviceSetup(deviceSetup);
     
     // initial values
-    vibratoStatus = false;
-    delayStatus   = false;
-    lowpassStatus = false;
+    vibratoStatus    = false;
+    delayStatus      = false;
+    lowpassStatus    = false;
+    ringModulatorStatus = false;
     iNumChannel = 2;
     inputMicGain = 1.0;
     
@@ -26,6 +27,7 @@ AudioStream::AudioStream()
     CVibrato::createInstance(pMyVibrato);
     pMyDelay = new CDelay(iNumChannel);
     pMyLPF   = new CLPF(iNumChannel);
+    pMyRingModulator = new CRingModulator(iNumChannel);
 
 }
 
@@ -37,6 +39,7 @@ AudioStream::~AudioStream()
     CVibrato::destroyInstance(pMyVibrato);
     delete pMyDelay;
     delete pMyLPF;
+    delete pMyRingModulator;
 }
 
 void AudioStream::audioDeviceAboutToStart(AudioIODevice* device)
@@ -45,6 +48,7 @@ void AudioStream::audioDeviceAboutToStart(AudioIODevice* device)
     fSampleRate = device->getCurrentSampleRate();
     pMyVibrato->initInstance(0.25, fSampleRate , iNumChannel);
     pMyDelay->setSampleRate(fSampleRate);
+    pMyRingModulator->setSampleRate(fSampleRate);
 }
 
 void AudioStream::audioDeviceStopped()
@@ -95,6 +99,18 @@ void AudioStream::setEffectParam(int effectID, int parameterID, float value)
                 //pMyLPF->setCutoff(paramValue2);
             }
             
+        case 4: //Ring Modulator
+            if (parameterID == 1)
+            {
+                paramValue1 = 880 * value;
+                pMyRingModulator->setModFreq2(paramValue1);
+            }
+            if (parameterID == 2)
+            {
+                paramValue2 = 2 + value * 6;
+                pMyRingModulator->setModFreq(paramValue2);
+            }
+            
         default:
             break;
     }
@@ -112,6 +128,9 @@ void AudioStream::setEffectStatus(int effectID)
             break;
         case 3:
             lowpassStatus = !lowpassStatus;
+            break;
+        case 4:
+            ringModulatorStatus = !ringModulatorStatus;
             break;
             
         default:
@@ -165,6 +184,12 @@ void AudioStream::audioDeviceIOCallback(const float** inputChannelData,
     if (lowpassStatus)
     {
         pMyLPF->process(outputChannelData, outputChannelData, blockSize);
+    }
+    
+    // ======== effect 4
+    if (ringModulatorStatus)
+    {
+        pMyRingModulator->process(outputChannelData, outputChannelData, blockSize);
     }
     
 

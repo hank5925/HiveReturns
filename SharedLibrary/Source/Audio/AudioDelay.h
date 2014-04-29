@@ -1,13 +1,13 @@
 //
 //  AudioDelay.h
-//  SharedLibrary
+//  HiveReturn
 //
 //  Created by Chih-Wei on 3/10/14.
 //  Copyright (c) 2014 GTCMT. All rights reserved.
 //
 
-#ifndef __SharedLibrary__AudioDelay__
-#define __SharedLibrary__AudioDelay__
+#ifndef __HiveReturn__AudioDelay__
+#define __HiveReturn__AudioDelay__
 
 #if !defined(__CDelay_hdr__)
 #define __CDelay_hdr__
@@ -69,4 +69,4 @@ private:
 
 #endif
 
-#endif /* defined(__SharedLibrary__AudioDelay__) */
+#endif /* defined(__HiveReturn__AudioDelay__) */

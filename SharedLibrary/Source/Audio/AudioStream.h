@@ -1,13 +1,13 @@
 //
 //  AudioStream.h
-//  SharedLibrary
+//  HiveReturn
 //
 //  Created by Govinda Ram Pingali on 3/7/14.
 //  Copyright (c) 2014 GTCMT. All rights reserved.
 //
 
-#ifndef __SharedLibrary__AudioStream__
-#define __SharedLibrary__AudioStream__
+#ifndef __HiveReturn__AudioStream__
+#define __HiveReturn__AudioStream__
 
 #include "SharedLibraryHeader.h"
 #include "AudioEffects.h"
@@ -60,4 +60,4 @@ private:
     
 };
 
-#endif /* defined(__SharedLibrary__AudioStream__) */
+#endif /* defined(__HiveReturn__AudioStream__) */

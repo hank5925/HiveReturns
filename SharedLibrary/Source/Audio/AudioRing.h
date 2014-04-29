@@ -1,17 +1,17 @@
 //
 //  AudioRing.h
-//  SharedLibrary
+//  HiveReturn
 //
 //  Created by Chih-Wei on 4/27/14.
 //  Copyright (c) 2014 GTCMT. All rights reserved.
 //
 
-#ifndef __SharedLibrary__AudioRing__
-#define __SharedLibrary__AudioRing__
+#ifndef __HiveReturn__AudioRing__
+#define __HiveReturn__AudioRing__
 
 #include <iostream>
 
-#endif /* defined(__SharedLibrary__AudioRing__) */
+#endif /* defined(__HiveReturn__AudioRing__) */
 
 class CRingModulator
 {

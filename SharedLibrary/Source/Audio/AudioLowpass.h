@@ -1,17 +1,17 @@
 //
 //  AudioLowpass.h
-//  SharedLibrary
+//  HiveReturn
 //
 //  Created by Chih-Wei on 4/24/14.
 //  Copyright (c) 2014 GTCMT. All rights reserved.
 //
 
-#ifndef __SharedLibrary__AudioLowpass__
-#define __SharedLibrary__AudioLowpass__
+#ifndef __HiveReturn__AudioLowpass__
+#define __HiveReturn__AudioLowpass__
 
 #include <iostream>
 
-#endif /* defined(__SharedLibrary__AudioLowpass__) */
+#endif /* defined(__HiveReturn__AudioLowpass__) */
 
 #include <cmath>
 

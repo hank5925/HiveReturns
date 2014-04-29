@@ -1,17 +1,17 @@
 //
 //  AudioPitchShift.h
-//  SharedLibrary
+//  HiveReturn
 //
 //  Created by Chih-Wei on 4/26/14.
 //  Copyright (c) 2014 GTCMT. All rights reserved.
 //
 
-#ifndef __SharedLibrary__AudioPitchShift__
-#define __SharedLibrary__AudioPitchShift__
+#ifndef __HiveReturn__AudioPitchShift__
+#define __HiveReturn__AudioPitchShift__
 
 #include <iostream>
 
-#endif /* defined(__SharedLibrary__AudioPitchShift__) */
+#endif /* defined(__HiveReturn__AudioPitchShift__) */
 
 #define MAX_FRAMES 200000
 

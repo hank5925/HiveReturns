@@ -1,17 +1,17 @@
 //
 //  AudioRecorder.h
-//  SharedLibrary
+//  HiveReturn
 //
 //  Created by Chih-Wei on 3/8/14.
 //  Copyright (c) 2014 GTCMT. All rights reserved.
 //
 
-#ifndef __SharedLibrary__AudioRecorder__
-#define __SharedLibrary__AudioRecorder__
+#ifndef __HiveReturn__AudioRecorder__
+#define __HiveReturn__AudioRecorder__
 
 #include <iostream>
 
-#endif /* defined(__SharedLibrary__AudioRecorder__) */
+#endif /* defined(__HiveReturn__AudioRecorder__) */
 
 #include "SharedLibraryHeader.h"
 

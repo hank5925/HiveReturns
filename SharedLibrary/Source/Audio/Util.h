@@ -1,13 +1,13 @@
 //
 //  Util.h
-//  SharedLibrary
+//  HiveReturn
 //
 //  Created by Chih-Wei on 3/10/14.
 //  Copyright (c) 2014 GTCMT. All rights reserved.
 //
 
-#ifndef __SharedLibrary__Util__
-#define __SharedLibrary__Util__
+#ifndef __HiveReturn__Util__
+#define __HiveReturn__Util__
 
 #if !defined(__Util_hdr__)
 #define __Util_hdr__
@@ -92,4 +92,4 @@ public:
 };
 #endif // __Util_hdr__
 
-#endif /* defined(__SharedLibrary__Util__) */
+#endif /* defined(__HiveReturn__Util__) */

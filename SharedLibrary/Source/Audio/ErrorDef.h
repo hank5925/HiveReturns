@@ -1,13 +1,13 @@
 //
 //  ErrorDef.h
-//  SharedLibrary
+//  HiveReturn
 //
 //  Created by Chih-Wei on 3/10/14.
 //  Copyright (c) 2014 GTCMT. All rights reserved.
 //
 
-#ifndef __SharedLibrary__ErrorDef__
-#define __SharedLibrary__ErrorDef__
+#ifndef __HiveReturn__ErrorDef__
+#define __HiveReturn__ErrorDef__
 
 #if !defined(__ErrorDef_hdr__)
 #define __ErrorDef_hdr__
@@ -35,4 +35,4 @@ enum Error_t
 
 
 
-#endif /* defined(__SharedLibrary__ErrorDef__) */
+#endif /* defined(__HiveReturn__ErrorDef__) */

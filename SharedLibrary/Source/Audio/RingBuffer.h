@@ -1,6 +1,6 @@
 //
 //  AudioRingbuffer.h
-//  SharedLibrary
+//  HiveReturn
 //
 //  Created by Chih-Wei on 3/10/14.
 //  Copyright (c) 2014 GTCMT. All rights reserved.

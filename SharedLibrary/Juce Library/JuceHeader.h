@@ -32,7 +32,7 @@
 
 namespace ProjectInfo
 {
-    const char* const  projectName    = "SharedLibrary";
+    const char* const  projectName    = "HiveReturn";
     const char* const  versionString  = "1.0.1";
     const int          versionNumber  = 0x10001;
 }

@@ -1,13 +1,13 @@
 //
 //  Lfo.h
-//  SharedLibrary
+//  HiveReturn
 //
 //  Created by Chih-Wei on 3/10/14.
 //  Copyright (c) 2014 GTCMT. All rights reserved.
 //
 
-#ifndef __SharedLibrary__Lfo__
-#define __SharedLibrary__Lfo__
+#ifndef __HiveReturn__Lfo__
+#define __HiveReturn__Lfo__
 
 #if !defined(__Lfo_hdr__)
 #define __Lfo_hdr__
@@ -148,4 +148,4 @@ private:
     }
 };
 #endif // __Lfo_hdr__
-#endif /* defined(__SharedLibrary__Lfo__) */
+#endif /* defined(__HiveReturn__Lfo__) */

@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Shared Library View Controller-->
+        <!--Hive Return View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="SharedLibraryViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="HiveReturnViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="86r-u4-xXQ"/>
                         <viewControllerLayoutGuide type="bottom" id="P1q-cb-icQ"/>
@@ -23,7 +23,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="顫音音色" backgroundImage="test3-1.png"/>
                                 <state key="disabled" backgroundImage="test5-1.png"/>
-                                <state key="selected" backgroundImage="test4-1.png"/>
+                                <state key="selected" title="Vibrato" backgroundImage="test4-1.png"/>
                                 <state key="highlighted" backgroundImage="test5-1.png"/>
                                 <connections>
                                     <action selector="toggleVibratoButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="kfU-pe-aYg"/>
@@ -37,7 +37,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="disabled" backgroundImage="test5-2.png"/>
-                                <state key="selected" title="Pitchshift" backgroundImage="test4-2.png"/>
+                                <state key="selected" title="RingMod" backgroundImage="test4-2.png"/>
                                 <state key="highlighted" backgroundImage="test5-2.png"/>
                                 <connections>
                                     <action selector="togglePitchShiftButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hMh-jA-4Jh"/>
@@ -80,10 +80,10 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="disabled" backgroundImage="test5.png"/>
-                                <state key="selected" title="Start" backgroundImage="test2.png"/>
+                                <state key="selected" backgroundImage="test2.png"/>
                                 <state key="highlighted" backgroundImage="test5.png"/>
                                 <connections>
-                                    <action selector="toggleStartButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hnB-nt-QgY"/>
+                                    <action selector="toggleStartButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="QaO-K9-geY"/>
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="aX6-di-vMY">
@@ -101,7 +101,7 @@
                         <outlet property="toggleDelayButton" destination="9Rl-6R-eAT" id="Q86-CK-gmT"/>
                         <outlet property="toggleLowpassButton" destination="Dza-2U-BC0" id="r5K-EK-W1N"/>
                         <outlet property="togglePitchShiftButton" destination="mi0-YK-Tma" id="2px-cH-jbc"/>
-                        <outlet property="toggleStartButton" destination="QPJ-8R-ECp" id="4hk-D0-E5i"/>
+                        <outlet property="toggleStartButton" destination="QPJ-8R-ECp" id="dQd-wY-Wya"/>
                         <outlet property="toggleVibratoButton" destination="P9P-G0-iDD" id="tH7-am-rie"/>
                     </connections>
                 </viewController>

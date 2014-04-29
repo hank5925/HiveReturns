@@ -1,13 +1,13 @@
 //
 //  AudioVibrato.h
-//  SharedLibrary
+//  HiveReturn
 //
 //  Created by Chih-Wei on 3/10/14.
 //  Copyright (c) 2014 GTCMT. All rights reserved.
 //
 
-#ifndef __SharedLibrary__AudioVibrato__
-#define __SharedLibrary__AudioVibrato__
+#ifndef __HiveReturn__AudioVibrato__
+#define __HiveReturn__AudioVibrato__
 
 #include "ErrorDef.h"
 
@@ -65,4 +65,4 @@ private:
     int     m_iNumChannels;
     float m_aafParamRange[kNumVibratoParams][2];
 };
-#endif /* defined(__SharedLibrary__AudioVibrato__) */
+#endif /* defined(__HiveReturn__AudioVibrato__) */

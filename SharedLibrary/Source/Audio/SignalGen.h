@@ -1,13 +1,13 @@
 //
 //  SignalGen.h
-//  SharedLibrary
+//  HiveReturn
 //
 //  Created by Chih-Wei on 3/10/14.
 //  Copyright (c) 2014 GTCMT. All rights reserved.
 //
 
-#ifndef __SharedLibrary__SignalGen__
-#define __SharedLibrary__SignalGen__
+#ifndef __HiveReturn__SignalGen__
+#define __HiveReturn__SignalGen__
 
 #if !defined(__SignalGen_hdr__)
 #define __SignalGen_hdr__
@@ -94,4 +94,4 @@ public:
 };
 #endif // __SignalGen_hdr__
 
-#endif /* defined(__SharedLibrary__SignalGen__) */
+#endif /* defined(__HiveReturn__SignalGen__) */

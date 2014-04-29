@@ -1,13 +1,13 @@
 //
 //  SharedLibraryInterface.h
-//  SharedLibrary
+//  HiveReturn
 //
 //  Created by Govinda Ram Pingali on 3/8/14.
 //  Copyright (c) 2014 GTCMT. All rights reserved.
 //
 
-#ifndef __SharedLibrary__SharedLibraryInterface__
-#define __SharedLibrary__SharedLibraryInterface__
+#ifndef __HiveReturn__SharedLibraryInterface__
+#define __HiveReturn__SharedLibraryInterface__
 
 #include "AudioEngine.h"
 
@@ -28,4 +28,4 @@ private:
     AudioEngine*    audioEngine;
 };
 
-#endif /* defined(__SharedLibrary__SharedLibraryInterface__) */
+#endif /* defined(__HiveReturn__SharedLibraryInterface__) */

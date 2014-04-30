@@ -54,6 +54,26 @@
     m_bToggleLowpassStatus      = false;
     
     m_fGainValue                = 1.f;
+    
+    m_bAccelerometerTriggerStatus = false;
+    m_bAccelerometerTriggerPreviousStatus = false;
+    m_iAccelerometerTriggerCounter = 0;
+    
+    m_bLeftFrontTriggerStatus = false;
+    m_bLeftFrontTriggerPreviousStatus = false;
+    m_iLeftFrontTriggerCounter = 0;
+    
+    m_bRightFrontTriggerStatus = false;
+    m_bRightFrontTriggerPreviousStatus = false;
+    m_iRightFrontTriggerCounter = 0;
+    
+    m_bLeftBackTriggerStatus = false;
+    m_bLeftBackTriggerPreviousStatus = false;
+    m_iLeftBackTriggerCounter = 0;
+    
+    m_bRightBackTriggerStatus = false;
+    m_bRightBackTriggerPreviousStatus = false;
+    m_iRightBackTriggerCounter = 0;
 }
 
 
@@ -75,33 +95,197 @@
                 ranges from -pi to pi, righty minus lefty plus
                 a glitch happens when pi changes to -pi with slight spin
      */
+    
     if (m_bToggleVibratoStatus)
     {
-        backEndInterface->setParameter(1, 1, (deviceMotion.attitude.roll + M_PI) / (M_PI * 2.f));
-        backEndInterface->setParameter(1, 2, (deviceMotion.attitude.pitch + M_PI) / (M_PI));
+        backEndInterface->setParameter(1, 0, (deviceMotion.attitude.roll + M_PI) / (M_PI * 2));
+        backEndInterface->setParameter(1, 1, (deviceMotion.attitude.pitch + M_PI / 2) / (M_PI));
     }
     if (m_bToggleDelayStatus)
     {
-        backEndInterface->setParameter(2, 1, (deviceMotion.attitude.roll + M_PI) / (M_PI * 2.f));
-        backEndInterface->setParameter(2, 2, (deviceMotion.attitude.pitch + M_PI) / (M_PI));
+        backEndInterface->setParameter(2, 0, (deviceMotion.attitude.roll + M_PI) / (M_PI * 2));
+        backEndInterface->setParameter(2, 1, (deviceMotion.attitude.pitch + M_PI / 2) / (M_PI));
     }
     if (m_bToggleLowpassStatus)
     {
-        backEndInterface->setParameter(3, 1, (deviceMotion.attitude.roll + M_PI) / (M_PI * 2.f));
-        backEndInterface->setParameter(3, 2, (deviceMotion.attitude.pitch + M_PI) / (M_PI));
+        backEndInterface->setParameter(3, 0, (deviceMotion.attitude.roll + M_PI) / (M_PI * 2));
+        backEndInterface->setParameter(3, 1, (deviceMotion.attitude.pitch + M_PI / 2) / (M_PI));
     }
     if (m_bTogglePitchShiftStatus)
     {
-        backEndInterface->setParameter(4, 1, (deviceMotion.attitude.roll + M_PI) / (M_PI * 2.f));
-        backEndInterface->setParameter(4, 2, (deviceMotion.attitude.pitch + M_PI) / (M_PI));
+        backEndInterface->setParameter(4, 0, (deviceMotion.attitude.roll + M_PI) / (M_PI * 2));
+        backEndInterface->setParameter(4, 1, (deviceMotion.attitude.pitch + M_PI / 2) / (M_PI));
     }
     
 //    backEndInterface->setParameter(2, 1, 1 / (1 + expf(deviceMotion.userAcceleration.x)));
 //    backEndInterface->setParameter(2, 2, 1 / (1 + expf(deviceMotion.userAcceleration.y)));
+
     
-//    std::cout   << deviceMotion.attitude.roll << " "
-//                << deviceMotion.attitude.pitch << " "
-//                << deviceMotion.attitude.yaw << std::endl;
+
+    //Accelerometer Trigger Status Update
+    double threshold = 0.6f;
+    int cool_down = 50;
+    
+    if (deviceMotion.userAcceleration.x > threshold && deviceMotion.userAcceleration.y < -threshold) {
+        if (!(m_bLeftFrontTriggerStatus || m_bRightFrontTriggerStatus || m_bLeftBackTriggerStatus || m_bRightBackTriggerStatus || m_bAccelerometerTriggerStatus)) {
+            m_bLeftFrontTriggerStatus = true;
+            m_iLeftFrontTriggerCounter = 0;
+        }
+    }
+    if (m_bLeftFrontTriggerStatus == true) {
+        m_iLeftFrontTriggerCounter += 1;
+        if (m_iLeftFrontTriggerCounter >= cool_down) {
+            m_iLeftFrontTriggerCounter = 0;
+            m_bLeftFrontTriggerStatus = false;
+        }
+    }
+    
+    if (deviceMotion.userAcceleration.x < -threshold && deviceMotion.userAcceleration.y < -threshold) {
+        if (!(m_bLeftFrontTriggerStatus || m_bRightFrontTriggerStatus || m_bLeftBackTriggerStatus || m_bRightBackTriggerStatus || m_bAccelerometerTriggerStatus)) {
+            m_bRightFrontTriggerStatus = true;
+            m_iRightFrontTriggerCounter = 0;
+        }
+    }
+    if (m_bRightFrontTriggerStatus == true) {
+        m_iRightFrontTriggerCounter += 1;
+        if (m_iRightFrontTriggerCounter >= cool_down) {
+            m_iRightFrontTriggerCounter = 0;
+            m_bRightFrontTriggerStatus = false;
+        }
+    }
+    
+    if (deviceMotion.userAcceleration.x > threshold && deviceMotion.userAcceleration.y > threshold) {
+        if (!(m_bLeftFrontTriggerStatus || m_bRightFrontTriggerStatus || m_bLeftBackTriggerStatus || m_bRightBackTriggerStatus || m_bAccelerometerTriggerStatus)) {
+            m_bLeftBackTriggerStatus = true;
+            m_iLeftBackTriggerCounter = 0;
+        }
+    }
+    if (m_bLeftBackTriggerStatus == true) {
+        m_iLeftBackTriggerCounter += 1;
+        if (m_iLeftBackTriggerCounter >= cool_down) {
+            m_iLeftBackTriggerCounter = 0;
+            m_bLeftBackTriggerStatus = false;
+        }
+    }
+    
+    if (deviceMotion.userAcceleration.x < -threshold && deviceMotion.userAcceleration.y > threshold) {
+        if (!(m_bLeftFrontTriggerStatus || m_bRightFrontTriggerStatus || m_bLeftBackTriggerStatus || m_bRightBackTriggerStatus || m_bAccelerometerTriggerStatus)) {
+            m_bRightBackTriggerStatus = true;
+            m_iRightBackTriggerCounter = 0;
+        }
+    }
+    if (m_bRightBackTriggerStatus == true) {
+        m_iRightBackTriggerCounter += 1;
+        if (m_iRightBackTriggerCounter >= cool_down) {
+            m_iRightBackTriggerCounter = 0;
+            m_bRightBackTriggerStatus = false;
+        }
+    }
+    
+    if (fabs(deviceMotion.userAcceleration.z) > 2) {
+        if (!(m_bLeftFrontTriggerStatus || m_bRightFrontTriggerStatus || m_bLeftBackTriggerStatus || m_bRightBackTriggerStatus || m_bAccelerometerTriggerStatus)) {
+            m_bAccelerometerTriggerStatus = true;
+            m_iAccelerometerTriggerCounter = 0;
+        }
+    }
+    if (m_bAccelerometerTriggerStatus == true) {
+        m_iAccelerometerTriggerCounter += 1;
+        if (m_iAccelerometerTriggerCounter >= cool_down) {
+            m_iAccelerometerTriggerCounter = 0;
+            m_bAccelerometerTriggerStatus = false;
+        }
+    }
+    
+    if (m_bAccelerometerTriggerStatus) {
+        [self toggleStartButtonClicked:nil];
+        std::cout << "   DOWN";
+    } else {
+        std::cout << "       ";
+    }
+    if (m_bLeftFrontTriggerStatus) {
+        [self toggleVibratoButtonClicked:nil];
+        std::cout << "   LEFR";
+    } else {
+        std::cout << "       ";
+    }
+    if (m_bRightFrontTriggerStatus) {
+        [self togglePitchShiftButtonClicked:nil];
+        std::cout << "   RIFR";
+    } else {
+        std::cout << "       ";
+    }
+    if (m_bLeftBackTriggerStatus) {
+        [self toggleDelayButtonClicked:nil];
+        std::cout << "   LEBA";
+    } else {
+        std::cout << "       ";
+    }
+    if (m_bRightBackTriggerStatus) {
+        [self toggleLowpassButtonClicked:nil];
+        std::cout << "   RIBA";
+    } else {
+        std::cout << "       ";
+    }
+    std::cout << std::endl;
+    
+
+    
+    
+    
+    
+    //Corpse of YAW Selector
+    //Yaw is not as robust as we thought. The critical issue is the "Drifting Yaw".
+    //Which means the Yaw value changes when intense motion happened. Precisely, origin direction of yaw drifted clockwise.
+    
+//    std::cout << deviceMotion.attitude.roll << " " << deviceMotion.attitude.pitch << " " << deviceMotion.attitude.yaw;
+//    if (deviceMotion.attitude.yaw >= M_PI / 10 && deviceMotion.attitude.yaw < M_PI * 3 / 10) {
+//        std::cout << " ONE";
+//    } else if (deviceMotion.attitude.yaw >= M_PI * 3 / 10 && deviceMotion.attitude.yaw < M_PI * 5 / 10) {
+//        std::cout << "THREE";
+//    } else if (deviceMotion.attitude.yaw >= -M_PI * 3 / 10 && deviceMotion.attitude.yaw < -M_PI / 10) {
+//        std::cout << " TWO";
+//    } else if (deviceMotion.attitude.yaw >= -M_PI * 5 / 10 && deviceMotion.attitude.yaw < -M_PI * 3 / 10) {
+//        std::cout << " FOUR";
+//    } else if (deviceMotion.attitude.yaw >= -M_PI / 10 && deviceMotion.attitude.yaw < M_PI / 10) {
+//        std::cout << " SSSSSSTART!!!";
+//    }
+    
+//    if (m_bAccelerometerTriggerPreviousStatus == false && m_bAccelerometerTriggerStatus == true){
+////        if (deviceMotion.attitude.yaw + M_PI < M_PI_2) {
+////            std::cout << " THREE";
+////            [self toggleLowpassButtonClicked:nil];
+////        }
+//        if (deviceMotion.attitude.yaw >= M_PI / 10 && deviceMotion.attitude.yaw < M_PI * 3 / 10) {
+////            std::cout << " ONE";
+//            [self toggleVibratoButtonClicked:nil];
+//        } else if (deviceMotion.attitude.yaw >= M_PI * 3 / 10 && deviceMotion.attitude.yaw < M_PI * 5 / 10) {
+////            std::cout << "THREE";
+//            [self toggleDelayButtonClicked:nil];
+//        } else if (deviceMotion.attitude.yaw >= -M_PI * 3 / 10 && deviceMotion.attitude.yaw < -M_PI / 10) {
+////            std::cout << " TWO";
+//            [self togglePitchShiftButtonClicked:nil];
+//        } else if (deviceMotion.attitude.yaw >= -M_PI * 5 / 10 && deviceMotion.attitude.yaw < -M_PI * 3 / 10) {
+////            std::cout << " FOUR";
+//            [self toggleLowpassButtonClicked:nil];
+//        } else if (deviceMotion.attitude.yaw >= -M_PI / 10 && deviceMotion.attitude.yaw < M_PI / 10) {
+////            std::cout << " SSSSSSTART!!!";
+//            [self toggleStartButtonClicked:nil];
+//        }
+//    }
+////    std::cout << std::endl;
+    
+    
+    
+    
+    m_bAccelerometerTriggerPreviousStatus = m_bAccelerometerTriggerStatus;
+    m_bLeftFrontTriggerPreviousStatus = m_bLeftFrontTriggerStatus;
+    m_bRightFrontTriggerPreviousStatus = m_bRightFrontTriggerStatus;
+    m_bLeftBackTriggerPreviousStatus = m_bLeftBackTriggerStatus;
+    m_bRightBackTriggerPreviousStatus = m_bRightBackTriggerStatus;
+    
+    
+    
+    // Cheat Sheet of usable motion variable
     
 //    deviceMotion.attitude.roll;
 //    deviceMotion.attitude.pitch;

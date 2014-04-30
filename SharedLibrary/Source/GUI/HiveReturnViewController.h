@@ -22,6 +22,26 @@
     bool m_bToggleLowpassStatus;
     
     float m_fGainValue;
+    
+    bool m_bAccelerometerTriggerStatus;
+    bool m_bAccelerometerTriggerPreviousStatus;
+    int m_iAccelerometerTriggerCounter;
+    
+    bool m_bLeftFrontTriggerStatus;
+    bool m_bLeftFrontTriggerPreviousStatus;
+    int m_iLeftFrontTriggerCounter;
+    
+    bool m_bRightFrontTriggerStatus;
+    bool m_bRightFrontTriggerPreviousStatus;
+    int m_iRightFrontTriggerCounter;
+    
+    bool m_bLeftBackTriggerStatus;
+    bool m_bLeftBackTriggerPreviousStatus;
+    int m_iLeftBackTriggerCounter;
+    
+    bool m_bRightBackTriggerStatus;
+    bool m_bRightBackTriggerPreviousStatus;
+    int m_iRightBackTriggerCounter;
 }
 
 // Core Motion

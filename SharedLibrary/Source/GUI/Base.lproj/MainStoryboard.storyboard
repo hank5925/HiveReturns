@@ -33,7 +33,7 @@
                                 <rect key="frame" x="161" y="96" width="103" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="平移音高" backgroundImage="test3-2.png">
+                                <state key="normal" title="環形調變" backgroundImage="test3-2.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="disabled" backgroundImage="test5-2.png"/>

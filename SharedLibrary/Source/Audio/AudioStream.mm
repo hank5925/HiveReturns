@@ -61,13 +61,13 @@ void AudioStream::setEffectParam(int effectID, int parameterID, float value)
     switch (effectID)
     {
         case 1: //vibrato
-            if (parameterID == 1)
+            if (parameterID == CVibrato::kParamModFreqInHz)
             {
                 //value = 0~1
                 paramValue1 = value * (0.01);
                 pMyVibrato->setParam(CVibrato::kParamModWidthInS, paramValue1);
             }
-            if (parameterID == 2)
+            if (parameterID == CVibrato::kParamModWidthInS)
             {
                 paramValue2 = value * (10);
                 pMyVibrato->setParam(CVibrato::kParamModFreqInHz, paramValue2);
@@ -75,37 +75,37 @@ void AudioStream::setEffectParam(int effectID, int parameterID, float value)
             break;
             
         case 2: //delay //need to fix the mapping values
-            if (parameterID == 1)
+            if (parameterID == CDelay::kParamDelayTimeInS)
             {
                 paramValue1 = value * (1.0); //delay time in sec
                 pMyDelay->setDelayTime(paramValue1);
 
             }
-            if (parameterID == 2)
+            if (parameterID == CDelay::kParamFeedbackGain)
             {
                 paramValue2 = value * (0.8); //feedback gain
                 pMyDelay->setFeedback(paramValue2);
             }
             
         case 3: //lowpass filter
-            if (parameterID == 1)
+            if (parameterID == 0)
             {
-                paramValue1 = value * 0.5;
+                paramValue1 = value * 0.7;
                 pMyLPF->setCutoff(paramValue1);
             }
-            if (parameterID == 2)
+            if (parameterID == 1)
             {
                 paramValue2 = value * 0.05; //no mapping
                 //pMyLPF->setCutoff(paramValue2);
             }
             
         case 4: //Ring Modulator
-            if (parameterID == 1)
+            if (parameterID == 0)
             {
                 paramValue1 = 880 * value;
                 pMyRingModulator->setModFreq2(paramValue1);
             }
-            if (parameterID == 2)
+            if (parameterID == 1)
             {
                 paramValue2 = 2 + value * 6;
                 pMyRingModulator->setModFreq(paramValue2);

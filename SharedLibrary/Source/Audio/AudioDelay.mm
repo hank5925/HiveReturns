@@ -81,21 +81,21 @@ void CDelay::setMaxDelay(float delayTimeInS)
 		maxDelayTimeInS = delayTimeInS;
 }
 
-void CDelay::setParam(int type, float value)
+void CDelay::setParam(DelayParam_t type, float value)
 {
 	switch(type)
 	{
-		case 0:
+		case kParamDelayTimeInS:
 			// delayTime_target	= value;
 			if (value > 0)
 				delayTime = value;
             break;
-		case 1:
+		case kParamFeedbackGain:
 			// feedBack_target		= value;
 			if (value >= 0 && value <= 1)
 				feedBack = value;
             break;
-		case 2:
+		case kParamWetDry:
 			// wetDry_target		= value;
 			if (abs(value) <= 1)
 				wetDry = value;

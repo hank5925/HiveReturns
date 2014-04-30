@@ -29,8 +29,18 @@ public:
     
 	CDelay(int numChannels);
     
+    
+    enum DelayParam_t
+    {
+        kParamDelayTimeInS,
+        kParamFeedbackGain,
+        kParamWetDry,
+        
+        kNumDelayParams
+    };
+    
 	// set:
-	void setParam(/*hFile::enumType type*/ int type, float value);
+	void setParam(/*hFile::enumType type*/ DelayParam_t type, float value);
     
 	void prepareToPlay(int sampleRate, int bufferSize);
 	void finishPlaying();

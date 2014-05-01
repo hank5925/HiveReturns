@@ -1144,6 +1144,23 @@
 			name = images;
 			sourceTree = "<group>";
 		};
+		98E4D0131911E40D004ED1C1 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				04F1DD6118CE4AFC00C4F6A0 /* AudioVibrato.h */,
+				04F1DD6018CE4AFC00C4F6A0 /* AudioVibrato.mm */,
+				04D888EF18CEBC65009DC2C3 /* AudioDelay.h */,
+				04D888EE18CEBC65009DC2C3 /* AudioDelay.mm */,
+				045E443A190A05FC00C52C78 /* AudioLowpass.h */,
+				045E4439190A05FC00C52C78 /* AudioLowpass.mm */,
+				045E4443190C9F1600C52C78 /* AudioPitchShift.h */,
+				045E4442190C9F1600C52C78 /* AudioPitchShift.mm */,
+				045E4446190CC83500C52C78 /* AudioRing.h */,
+				045E4445190CC83500C52C78 /* AudioRing.mm */,
+			);
+			name = Effects;
+			sourceTree = "<group>";
+		};
 		FCE6E08818CB00EF00D6D1A3 = {
 			isa = PBXGroup;
 			children = (
@@ -1205,28 +1222,19 @@
 		FCE6E0CE18CB019F00D6D1A3 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				FCE6E51518CB058300D6D1A3 /* AudioEngine.h */,
+				FCE6E51418CB058300D6D1A3 /* AudioEngine.mm */,
 				FCE6E51718CB05F900D6D1A3 /* AudioStream.h */,
 				FCE6E51818CB05F900D6D1A3 /* AudioStream.mm */,
-				045E4445190CC83500C52C78 /* AudioRing.mm */,
-				045E4446190CC83500C52C78 /* AudioRing.h */,
-				FCE6E51418CB058300D6D1A3 /* AudioEngine.mm */,
-				FCE6E51518CB058300D6D1A3 /* AudioEngine.h */,
-				04B7B1AE18CB1BA6009CBBC1 /* AudioRecorder.mm */,
 				04B7B1AF18CB1BA6009CBBC1 /* AudioRecorder.h */,
-				04F1DD6018CE4AFC00C4F6A0 /* AudioVibrato.mm */,
-				04F1DD6118CE4AFC00C4F6A0 /* AudioVibrato.h */,
+				04B7B1AE18CB1BA6009CBBC1 /* AudioRecorder.mm */,
 				04F1DD6418CE4BB700C4F6A0 /* RingBuffer.h */,
 				04F1DD6A18CE4CE800C4F6A0 /* ErrorDef.h */,
 				04F1DD6D18CE4D5500C4F6A0 /* Util.h */,
 				04F1DD7018CE4E3800C4F6A0 /* Lfo.h */,
 				04F1DD7318CE4E6900C4F6A0 /* SignalGen.h */,
 				04F1DD7518CE78F300C4F6A0 /* AudioEffects.h */,
-				04D888EE18CEBC65009DC2C3 /* AudioDelay.mm */,
-				04D888EF18CEBC65009DC2C3 /* AudioDelay.h */,
-				045E4439190A05FC00C52C78 /* AudioLowpass.mm */,
-				045E443A190A05FC00C52C78 /* AudioLowpass.h */,
-				045E4442190C9F1600C52C78 /* AudioPitchShift.mm */,
-				045E4443190C9F1600C52C78 /* AudioPitchShift.h */,
+				98E4D0131911E40D004ED1C1 /* Effects */,
 			);
 			path = Audio;
 			sourceTree = "<group>";

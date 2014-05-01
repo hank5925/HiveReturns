@@ -198,45 +198,38 @@
     
     if (m_bAccelerometerTriggerStatus) {
         [self toggleStartButtonClicked:nil];
-        std::cout << "   DOWN";
-    } else {
-        std::cout << "       ";
     }
     if (m_bLeftFrontTriggerStatus) {
         [self toggleVibratoButtonClicked:nil];
-        std::cout << "   LEFR";
-    } else {
-        std::cout << "       ";
     }
     if (m_bRightFrontTriggerStatus) {
         [self togglePitchShiftButtonClicked:nil];
-        std::cout << "   RIFR";
-    } else {
-        std::cout << "       ";
     }
     if (m_bLeftBackTriggerStatus) {
         [self toggleDelayButtonClicked:nil];
-        std::cout << "   LEBA";
-    } else {
-        std::cout << "       ";
     }
     if (m_bRightBackTriggerStatus) {
         [self toggleLowpassButtonClicked:nil];
-        std::cout << "   RIBA";
-    } else {
-        std::cout << "       ";
     }
-    std::cout << std::endl;
     
 
     
+    m_bAccelerometerTriggerPreviousStatus = m_bAccelerometerTriggerStatus;
+    m_bLeftFrontTriggerPreviousStatus = m_bLeftFrontTriggerStatus;
+    m_bRightFrontTriggerPreviousStatus = m_bRightFrontTriggerStatus;
+    m_bLeftBackTriggerPreviousStatus = m_bLeftBackTriggerStatus;
+    m_bRightBackTriggerPreviousStatus = m_bRightBackTriggerStatus;
     
     
     
-    //Corpse of YAW Selector
-    //Yaw is not as robust as we thought. The critical issue is the "Drifting Yaw".
-    //Which means the Yaw value changes when intense motion happened. Precisely, origin direction of yaw drifted clockwise.
-    
+    /*
+     
+        Corpse of YAW Selector
+     
+        Yaw is not as robust as we thought. The critical issue is the "Drifting Yaw".
+        Which means the Yaw value changes when intense motion happened. Precisely, origin direction of yaw drifted clockwise.
+     
+    */
 //    std::cout << deviceMotion.attitude.roll << " " << deviceMotion.attitude.pitch << " " << deviceMotion.attitude.yaw;
 //    if (deviceMotion.attitude.yaw >= M_PI / 10 && deviceMotion.attitude.yaw < M_PI * 3 / 10) {
 //        std::cout << " ONE";
@@ -277,36 +270,7 @@
     
     
     
-    m_bAccelerometerTriggerPreviousStatus = m_bAccelerometerTriggerStatus;
-    m_bLeftFrontTriggerPreviousStatus = m_bLeftFrontTriggerStatus;
-    m_bRightFrontTriggerPreviousStatus = m_bRightFrontTriggerStatus;
-    m_bLeftBackTriggerPreviousStatus = m_bLeftBackTriggerStatus;
-    m_bRightBackTriggerPreviousStatus = m_bRightBackTriggerStatus;
-    
-    
-    
-    // Cheat Sheet of usable motion variable
-    
-//    deviceMotion.attitude.roll;
-//    deviceMotion.attitude.pitch;
-//    deviceMotion.attitude.yaw;
-//    
-//    deviceMotion.userAcceleration.x;
-//    deviceMotion.userAcceleration.y;
-//    deviceMotion.userAcceleration.z;
-//
-//    deviceMotion.rotationRate.x;
-//    deviceMotion.rotationRate.y;
-//    deviceMotion.rotationRate.z;
-//    
-//    deviceMotion.attitude.quaternion.w;
-//    deviceMotion.attitude.quaternion.x;
-//    deviceMotion.attitude.quaternion.y;
-//    deviceMotion.attitude.quaternion.z;
-//    
-//    deviceMotion.gravity.x;
-//    deviceMotion.gravity.y;
-//    deviceMotion.gravity.z;
+
 }
 
 

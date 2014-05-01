@@ -12,7 +12,6 @@
 
 #include "SharedLibraryHeader.h"
 #include "AudioStream.h"
-#include "AudioRecorder.h"
 
 class AudioEngine
 

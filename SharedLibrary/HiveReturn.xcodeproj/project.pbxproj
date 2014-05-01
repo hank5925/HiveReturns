@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		045E443B190A05FC00C52C78 /* AudioLowpass.mm in Sources */ = {isa = PBXBuildFile; fileRef = 045E4439190A05FC00C52C78 /* AudioLowpass.mm */; };
-		045E4444190C9F1600C52C78 /* AudioPitchShift.mm in Sources */ = {isa = PBXBuildFile; fileRef = 045E4442190C9F1600C52C78 /* AudioPitchShift.mm */; };
 		045E4447190CC83500C52C78 /* AudioRing.mm in Sources */ = {isa = PBXBuildFile; fileRef = 045E4445190CC83500C52C78 /* AudioRing.mm */; };
-		04B7B1B018CB1BA6009CBBC1 /* AudioRecorder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 04B7B1AE18CB1BA6009CBBC1 /* AudioRecorder.mm */; };
 		04D888F018CEBC65009DC2C3 /* AudioDelay.mm in Sources */ = {isa = PBXBuildFile; fileRef = 04D888EE18CEBC65009DC2C3 /* AudioDelay.mm */; };
 		04F1DD6218CE4AFC00C4F6A0 /* AudioVibrato.mm in Sources */ = {isa = PBXBuildFile; fileRef = 04F1DD6018CE4AFC00C4F6A0 /* AudioVibrato.mm */; };
 		98898FAA18CEC7E600322073 /* test3-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 98898FA018CEC7E600322073 /* test3-1.png */; };
@@ -73,12 +71,8 @@
 /* Begin PBXFileReference section */
 		045E4439190A05FC00C52C78 /* AudioLowpass.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioLowpass.mm; sourceTree = "<group>"; };
 		045E443A190A05FC00C52C78 /* AudioLowpass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioLowpass.h; sourceTree = "<group>"; };
-		045E4442190C9F1600C52C78 /* AudioPitchShift.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioPitchShift.mm; sourceTree = "<group>"; };
-		045E4443190C9F1600C52C78 /* AudioPitchShift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPitchShift.h; sourceTree = "<group>"; };
 		045E4445190CC83500C52C78 /* AudioRing.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioRing.mm; sourceTree = "<group>"; };
 		045E4446190CC83500C52C78 /* AudioRing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioRing.h; sourceTree = "<group>"; };
-		04B7B1AE18CB1BA6009CBBC1 /* AudioRecorder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioRecorder.mm; sourceTree = "<group>"; };
-		04B7B1AF18CB1BA6009CBBC1 /* AudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioRecorder.h; sourceTree = "<group>"; };
 		04D888EE18CEBC65009DC2C3 /* AudioDelay.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioDelay.mm; sourceTree = "<group>"; };
 		04D888EF18CEBC65009DC2C3 /* AudioDelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDelay.h; sourceTree = "<group>"; };
 		04F1DD6018CE4AFC00C4F6A0 /* AudioVibrato.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioVibrato.mm; sourceTree = "<group>"; };
@@ -1153,8 +1147,6 @@
 				04D888EE18CEBC65009DC2C3 /* AudioDelay.mm */,
 				045E443A190A05FC00C52C78 /* AudioLowpass.h */,
 				045E4439190A05FC00C52C78 /* AudioLowpass.mm */,
-				045E4443190C9F1600C52C78 /* AudioPitchShift.h */,
-				045E4442190C9F1600C52C78 /* AudioPitchShift.mm */,
 				045E4446190CC83500C52C78 /* AudioRing.h */,
 				045E4445190CC83500C52C78 /* AudioRing.mm */,
 			);
@@ -1226,8 +1218,6 @@
 				FCE6E51418CB058300D6D1A3 /* AudioEngine.mm */,
 				FCE6E51718CB05F900D6D1A3 /* AudioStream.h */,
 				FCE6E51818CB05F900D6D1A3 /* AudioStream.mm */,
-				04B7B1AF18CB1BA6009CBBC1 /* AudioRecorder.h */,
-				04B7B1AE18CB1BA6009CBBC1 /* AudioRecorder.mm */,
 				04F1DD6418CE4BB700C4F6A0 /* RingBuffer.h */,
 				04F1DD6A18CE4CE800C4F6A0 /* ErrorDef.h */,
 				04F1DD6D18CE4D5500C4F6A0 /* Util.h */,
@@ -3100,13 +3090,11 @@
 				FCE6E50B18CB03AF00D6D1A3 /* juce_audio_devices.mm in Sources */,
 				04F1DD6218CE4AFC00C4F6A0 /* AudioVibrato.mm in Sources */,
 				FCE6E50C18CB03AF00D6D1A3 /* juce_audio_formats.mm in Sources */,
-				045E4444190C9F1600C52C78 /* AudioPitchShift.mm in Sources */,
 				FCE6E50D18CB03AF00D6D1A3 /* juce_core.mm in Sources */,
 				FCE6E50E18CB03AF00D6D1A3 /* juce_cryptography.mm in Sources */,
 				FCE6E50F18CB03AF00D6D1A3 /* juce_data_structures.mm in Sources */,
 				FCE6E51618CB058300D6D1A3 /* AudioEngine.mm in Sources */,
 				045E443B190A05FC00C52C78 /* AudioLowpass.mm in Sources */,
-				04B7B1B018CB1BA6009CBBC1 /* AudioRecorder.mm in Sources */,
 				FCE6E51018CB03AF00D6D1A3 /* juce_events.mm in Sources */,
 				FCE6E51118CB03AF00D6D1A3 /* juce_graphics.mm in Sources */,
 				FCE6E51918CB05F900D6D1A3 /* AudioStream.mm in Sources */,
